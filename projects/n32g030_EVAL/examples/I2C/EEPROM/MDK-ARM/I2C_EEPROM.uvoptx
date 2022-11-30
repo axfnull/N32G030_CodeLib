@@ -132,7 +132,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>CMSIS_AGDI</Key>
-          <Name>-X"Any" -UAny -O206 -S4 -C0 -P00 -N00("ARM CoreSight SW-DP") -D00(0BB11477) -L00(0) -TO18 -TC10000000 -TP20 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO7 -FD20000000 -FC1000 -FN1 -FF0N32G030x.FLM -FS08000000 -FL010000 -FP0($$Device:N32G030C8$Flash\N32G030x.FLM)</Name>
+          <Name>-X"Any" -UAny -O206 -S10 -C0 -P00 -N00("ARM CoreSight SW-DP") -D00(0BB11477) -L00(0) -TO18 -TC10000000 -TP20 -TDS8007 -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO7 -FD20000000 -FC1000 -FN1 -FF0N32G030x.FLM -FS08000000 -FL010000 -FP0($$Device:N32G030C8$Flash\N32G030x.FLM)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>

@@ -28,7 +28,7 @@
 /**
  * @file n32g030_rtc.h
  * @author Nations
- * @version v1.0.0
+ * @version v1.0.1
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
@@ -536,6 +536,8 @@ typedef struct
 /** @addtogroup RTC_Flags_Definitions
  * @{
  */
+#define RTC_INT_FLAG_RESERVED_MASK   ((uint32_t)0x00017FFF)
+
 #define RTC_FLAG_RECPF  ((uint32_t)0x00010000)
 
 #define RTC_FLAG_TAMP2F ((uint32_t)0x00004000)
@@ -708,7 +710,6 @@ typedef struct
 ErrorStatus RTC_DeInit(void);
 
 /* Initialization and Configuration functions *********************************/
-ErrorStatus RTC_Init(RTC_InitType* RTC_InitStruct);
 void RTC_StructInit(RTC_InitType* RTC_InitStruct);
 void RTC_EnableWriteProtection(FunctionalState Cmd);
 ErrorStatus RTC_EnterInitMode(void);
@@ -717,12 +718,14 @@ ErrorStatus RTC_WaitForSynchro(void);
 ErrorStatus RTC_EnableRefClock(FunctionalState Cmd);
 void RTC_EnableBypassShadow(FunctionalState Cmd);
 
+ErrorStatus RTC_ConfigCalendar(uint32_t RTC_Format, RTC_InitType* RTC_InitStruct,          \
+								RTC_DateType* RTC_DateStruct, RTC_TimeType* RTC_TimeStruct,\
+								FunctionalState RTC_DelayCmd);
+
 /* Time and Date configuration functions **************************************/
-ErrorStatus RTC_ConfigTime(uint32_t RTC_Format, RTC_TimeType* RTC_TimeStruct);
 void RTC_TimeStructInit(RTC_TimeType* RTC_TimeStruct);
 void RTC_GetTime(uint32_t RTC_Format, RTC_TimeType* RTC_TimeStruct);
 uint32_t RTC_GetSubSecond(void);
-ErrorStatus RTC_SetDate(uint32_t RTC_Format, RTC_DateType* RTC_DateStruct);
 void RTC_DateStructInit(RTC_DateType* RTC_DateStruct);
 void RTC_GetDate(uint32_t RTC_Format, RTC_DateType* RTC_DateStruct);
 

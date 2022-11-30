@@ -54,14 +54,34 @@ void LEDInit(void);
 void LedOn(uint16_t Pin);
 void LedOff(uint16_t Pin);
 void RTC_CLKSourceConfig(uint8_t ClkSrc, uint8_t FirstLastCfg, uint8_t RstBKP);
-ErrorStatus RTC_TimeRegulate(void);
-ErrorStatus RTC_DateRegulate(void);
+ErrorStatus RTC_TimeInitialValueSet(void);
+ErrorStatus RTC_DateInitialValueSet(void);
 void RTC_DateAndTimeDefaultVale(void);
-static void RTC_PrescalerConfig(void);
+static void RTC_PrescalerSet(void);
 void EXTI20_RTCWKUP_Configuration(FunctionalState Cmd);
 void RTC_TimeShow(void);
 void RTC_DateShow(void);
 void WakeUpClockSelect(uint8_t WKUPClkSrcSel);
+
+/**
+ * @brief  Calendar initialization configuration.
+ */
+ErrorStatus RTC_CalendarInitialize(FunctionalState delay_cmd)
+{
+    /* Configure the RTC PRE, Date amd Time register */
+    if (RTC_ConfigCalendar(RTC_FORMAT_BIN, &RTC_InitStructure, &RTC_DateStructure, &RTC_TimeStructure, delay_cmd) == ERROR)
+    {
+        log_info("\n\r>> !! RTC Calendar Configure failed. !! <<\n\r");
+        return ERROR;
+    }
+    else
+    {
+        log_info("\n\r>> !! RTC Calendar Configure success. !! <<\n\r");
+		RTC_DateShow();
+        RTC_TimeShow();
+        return SUCCESS;
+    }
+}
 
 /**
  * @brief  Main program.
@@ -79,7 +99,7 @@ int main(void)
     /* Initialize LEDs on n32g43x-EVAL board */
     LEDInit();
     LedOff(LED1_PIN);
-    /* Initialize USART,TX: PC10 RX: PC11*/
+    /* Initialize USART,TX: PA9 RX: PA10*/
     log_init();
     log_info("RTC Init");
     /* RTC date time alarm default value*/
@@ -87,12 +107,18 @@ int main(void)
 
     /* RTC clock source select 1:HSE/128 2:LSE 3:LSI*/
     RTC_CLKSourceConfig(3, 0, 1);
-    RTC_PrescalerConfig();
+	
     log_info("\r\n RTC configured....");
 
-    /* Adjust time by values entered by the user on the hyperterminal */
-    RTC_DateRegulate();
-    RTC_TimeRegulate();
+    /* RTC prescaler, date and time initial value set*/
+	RTC_PrescalerSet();
+    RTC_DateInitialValueSet();
+    RTC_TimeInitialValueSet();
+	
+	/* RTC calendar Initialize*/
+	/* Disable the function of delay 1 second*/
+	RTC_CalendarInitialize(DISABLE);
+	
     /* wake up clock select */
     WakeUpClockSelect(5);
     /* wake up timer value */
@@ -172,7 +198,7 @@ void LedBlink(GPIO_Module* GPIOx, uint16_t Pin)
  */
 void LedOn(uint16_t Pin)
 {
-    GPIOB->PBC = Pin;
+	GPIOB->PBSC = Pin;
 }
 /**
  * @brief  Turns selected Led Off.
@@ -184,7 +210,7 @@ void LedOn(uint16_t Pin)
  */
 void LedOff(uint16_t Pin)
 {
-    GPIOB->PBSC = Pin;
+    GPIOB->PBC = Pin;
 }
 /**
  * @brief  Configures LED GPIO.
@@ -255,10 +281,11 @@ void RTC_DateAndTimeDefaultVale(void)
     RTC_TimeDefault.Minutes = 5;
     RTC_TimeDefault.Seconds = 1;
 }
+
 /**
- * @brief  RTC date regulate with the default value.
+ * @brief  RTC date initial value set with the default value.
  */
-ErrorStatus RTC_DateRegulate(void)
+ErrorStatus RTC_DateInitialValueSet(void)
 {
     uint32_t tmp_hh = 0xFF, tmp_mm = 0xFF, tmp_ss = 0xFF;
     log_info("\n\r //=============Date Settings================// \n\r");
@@ -312,23 +339,12 @@ ErrorStatus RTC_DateRegulate(void)
     }
     log_info(": %0.2d\n\r", tmp_ss);
 
-    /* Configure the RTC date register */
-    if (RTC_SetDate(RTC_FORMAT_BIN, &RTC_DateStructure) == ERROR)
-    {
-        log_info("\n\r>> !! RTC Set Date failed. !! <<\n\r");
-        return ERROR;
-    }
-    else
-    {
-        log_info("\n\r>> !! RTC Set Date success. !! <<\n\r");
-        RTC_DateShow();
-        return SUCCESS;
-    }
+	return SUCCESS;
 }
 /**
- * @brief  RTC time regulate with the default value.
+ * @brief  RTC time initial value set with the default value.
  */
-ErrorStatus RTC_TimeRegulate(void)
+ErrorStatus RTC_TimeInitialValueSet(void)
 {
     uint32_t tmp_hh = 0xFF, tmp_mm = 0xFF, tmp_ss = 0xFF;
     log_info("\n\r //==============Time Settings=================// \n\r");
@@ -371,35 +387,18 @@ ErrorStatus RTC_TimeRegulate(void)
     }
     log_info(": %0.2d\n\r", tmp_ss);
 
-    /* Configure the RTC time register */
-    if (RTC_ConfigTime(RTC_FORMAT_BIN, &RTC_TimeStructure) == ERROR)
-    {
-        log_info("\n\r>> !! RTC Set Time failed. !! <<\n\r");
-        return ERROR;
-    }
-    else
-    {
-        log_info("\n\r>> !! RTC Set Time success. !! <<\n\r");
-        RTC_TimeShow();
-        return SUCCESS;
-    }
+	return SUCCESS;
 }
 
 /**
- * @brief  RTC prescaler config.
+ * @brief  RTC prescaler set.
  */
-static void RTC_PrescalerConfig(void)
+static void RTC_PrescalerSet(void)
 {
-    /* Configure the RTC data register and RTC prescaler */
+    /* Init the RTC prescaler */
     RTC_InitStructure.RTC_AsynchPrediv = AsynchPrediv;
     RTC_InitStructure.RTC_SynchPrediv  = SynchPrediv;
     RTC_InitStructure.RTC_HourFormat   = RTC_24HOUR_FORMAT;
-
-    /* Check on RTC init */
-    if (RTC_Init(&RTC_InitStructure) == ERROR)
-    {
-        log_info("\r\n //******* RTC Prescaler Config failed **********// \r\n");
-    }
 }
 
 /**

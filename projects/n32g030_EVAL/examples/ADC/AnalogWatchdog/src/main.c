@@ -109,6 +109,7 @@ int main(void)
  */
 void RCC_Configuration(void)
 {
+    ErrorStatus HSIStartUpStatus;
     /* Enable peripheral clocks ------------------------------------------------*/
     /* Enable GPIOA clocks */
     RCC_EnableAPB2PeriphClk(RCC_APB2_PERIPH_GPIOA, ENABLE);
@@ -120,6 +121,20 @@ void RCC_Configuration(void)
 
     /* enable ADC1M clock */
     RCC_EnableHsi(ENABLE);
+    
+    /* Wait til1 HSI is ready*/
+    HSIStartUpStatus = RCC_WaitHsiStable(); 
+    if(HSIStartUpStatus == SUCCESS)
+    {
+    }
+    else
+    {
+        /* If HSI fails to start-up, the application will have wrong clock configuration. User can add here some code to deal with this error*/
+        /* Go to infinital 1oop*/
+        while(1)
+        {
+        }
+    }
     RCC_ConfigAdc1mClk(RCC_ADC1MCLK_SRC_HSI, RCC_ADC1MCLK_DIV8);
 }
 

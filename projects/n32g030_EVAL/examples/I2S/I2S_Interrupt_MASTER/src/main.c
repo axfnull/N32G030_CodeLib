@@ -28,7 +28,7 @@
 /**
  * @file main.c
  * @author Nations
- * @version v1.0.0
+ * @version v1.0.1
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
@@ -91,6 +91,7 @@ int main(void)
     /* I2S peripheral configuration */
     I2S_InitStructure.Standard       = I2S_STD_PHILLIPS;
     I2S_InitStructure.DataFormat     = I2S_DATA_FMT_16BITS_EXTENDED;
+    I2S_InitStructure.MCLKEnable     = I2S_MCLK_DISABLE;
     I2S_InitStructure.AudioFrequency = I2S_AUDIO_FREQ_48K;
     I2S_InitStructure.CLKPOL         = I2S_CLKPOL_LOW;
 
@@ -110,12 +111,6 @@ int main(void)
     {
     }
 
-  //  TransferStatus1 = Buffercmp(I2S2_Buffer_Rx, (uint16_t*)I2S3_Buffer_Tx, 32);
-    /* TransferStatus1 = PASSED, if the data transmitted from master and received by
-                                 slave are the same
-       TransferStatus1 = FAILED, if the data transmitted from master and received by
-                                 slave are different */
-
     /* delay sometime */
     for (RxIdx = 0; RxIdx < 1024; RxIdx++)
     {
@@ -129,6 +124,7 @@ int main(void)
     /* I2S peripheral configuration */
     I2S_InitStructure.Standard       = I2S_STD_PHILLIPS;
     I2S_InitStructure.DataFormat     = I2S_DATA_FMT_24BITS;
+    I2S_InitStructure.MCLKEnable     = I2S_MCLK_DISABLE;
     I2S_InitStructure.AudioFrequency = I2S_AUDIO_FREQ_16K;
     I2S_InitStructure.CLKPOL         = I2S_CLKPOL_LOW;
 
@@ -147,12 +143,6 @@ int main(void)
     while (TxIdx < 32)
     {
     }
-
-  //  TransferStatus2 = Buffercmp24bits(I2S2_Buffer_Rx, (uint16_t*)I2S3_Buffer_Tx, 32);
-    /* TransferStatus2 = PASSED, if the data transmitted from master and received by
-                                 slave are the same
-       TransferStatus2 = FAILED, if the data transmitted from master and received by
-                                 slave are different */
 
     while (1)
     {

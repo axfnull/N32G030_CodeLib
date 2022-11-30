@@ -513,6 +513,18 @@ static void SetSysClock(void)
     }
 #elif SYSCLK_SRC == SYSCLK_USE_HSI_PLL || SYSCLK_SRC == SYSCLK_USE_HSE_PLL
 
+	#if ((SYSCLK_FREQ * (PLLOUT_DIV + 1)) < 48000000 ) || ((SYSCLK_FREQ * (PLLOUT_DIV + 1)) > 72000000 )
+	
+		#error FIN/N*M must be set in 48MHz to 72MHz
+	
+	#endif
+	
+	#if ((SYSCLK_FREQ * (PLLOUT_DIV + 1) / PLL_MUL) < 4000000 ) || ((SYSCLK_FREQ * (PLLOUT_DIV + 1) / PLL_MUL) > 20000000 )
+	
+		#error FIN/N must be set in 4MHz to 20MHz
+	
+	#endif
+		
     /* clear bits */
     /* Clear PLLOUTDIV PLLPRE bits */
     RCC->CFG &= (~RCC_CFG_PLLOUTDIV);

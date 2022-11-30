@@ -140,9 +140,11 @@ void RCC_Configuration(void)
     /* Enable COMP OPA clocks */
     RCC_EnableAPB1PeriphClk(RCC_APB1_PERIPH_COMP | RCC_APB1_PERIPH_OPAMP | RCC_APB1_PERIPH_COMPFILT, ENABLE);
 
-    /* Enable ADC clocks */
+    /* Enable ADC clock */
     RCC_EnableAHBPeriphClk(RCC_AHB_PERIPH_ADC ,ENABLE);
-    RCC_ConfigAdc1mClk(RCC_ADC1MCLK_SRC_HSE, RCC_ADC1MCLK_DIV8);  //selsect HSE as RCC ADC1M CLK Source	
+	  /* Enable ADC1M clock. selsect HSI as RCC ADC1M CLK Source. 
+	     The HSI should be enabled when you want to configure HSE as RCC ADC1M CLK source.*/	
+    RCC_ConfigAdc1mClk(RCC_ADC1MCLK_SRC_HSI, RCC_ADC1MCLK_DIV8);  
     /* RCC_ADCHCLK_DIV16*/
     RCC_ConfigAdcHclk(RCC_ADCHCLK_DIV16);
 

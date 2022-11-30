@@ -28,7 +28,7 @@
 /**
  * @file main.c
  * @author Nations 
- * @version v1.0.0
+ * @version v1.0.1
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
@@ -63,14 +63,13 @@ int main(void)
        */
     /* Enable PWR Clock */
     RCC_EnableAPB1PeriphClk(RCC_APB1_PERIPH_PWR, ENABLE);
-    /* Initialize LEDs on n32g030-EVAL board */
+    /* Initialize LOG port */
     log_init();
     log_info(" PWR_SLEEP INIT\n");
     /* Initialize Key button Interrupt to wake up the low power*/
     KeyInputExtiInit(KEY_INPUT_PORT, KEY_INPUT_PIN);
-    /* Clear the Interrupt flag */
-    //EXTI_ClrITPendBit(EXTI_LINE7);
-
+    /*  Enable the DBG_SLEEP to keep debug in low power  */
+    DBG_ConfigPeriph(DBG_SLEEP, ENABLE);
     while (1)
     {
 
@@ -79,6 +78,7 @@ int main(void)
        log_info("Lower Power Entry\n");
         /* Request to enter SLEEP mode*/
        PWR_EnterSLEEPMode(SLEEP_OFF_EXIT, PWR_SLEEPENTRY_WFI);
+       log_info("Lower Power Exit\n");
     }
 }
 

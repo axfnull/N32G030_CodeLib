@@ -10,7 +10,8 @@
       <TargetName>N32G030</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pCCUsed>5060300::V5.06 update 3 (build 300)::ARMCC</pCCUsed>
+      <pCCUsed>5060960::V5.06 update 7 (build 960)::.\ARMCC</pCCUsed>
+      <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>N32G030C8</Device>
@@ -48,7 +49,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\Objects\</OutputDirectory>
-          <OutputName>EXTI</OutputName>
+          <OutputName>ADC_Vrefint</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -79,9 +80,9 @@
             <nStopB2X>0</nStopB2X>
           </BeforeMake>
           <AfterMake>
-            <RunUserProg1>0</RunUserProg1>
+            <RunUserProg1>1</RunUserProg1>
             <RunUserProg2>0</RunUserProg2>
-            <UserProg1Name>fromelf --bin --output=.\bin\EXTI.bin .\Objects\EXTI.axf</UserProg1Name>
+            <UserProg1Name>fromelf --bin --output=.\bin\ADC_Vrefint.bin .\Objects\ADC_Vrefint.axf</UserProg1Name>
             <UserProg2Name></UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
@@ -137,7 +138,7 @@
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -183,6 +184,8 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>0</RvdsVP>
+            <RvdsMve>0</RvdsMve>
+            <RvdsCdeCp>0</RvdsCdeCp>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -323,6 +326,7 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>0</uC99>
+            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>1</v6Lang>
             <v6LangP>1</v6LangP>
@@ -333,7 +337,7 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>N32G030, USE_STDPERIPH_DRIVER, USE_FULL_ASSERT</Define>
+              <Define>N32G030, USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
               <IncludePath>..\inc;..\..\..\..\..\..\firmware\CMSIS\core;..\..\..\..\..\..\firmware\CMSIS\device;..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc</IncludePath>
             </VariousControls>
@@ -348,7 +352,7 @@
             <NoWarn>0</NoWarn>
             <uSurpInc>0</uSurpInc>
             <useXO>0</useXO>
-            <uClangAs>0</uClangAs>
+            <ClangAsOpt>4</ClangAsOpt>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define></Define>
@@ -405,9 +409,14 @@
               <FilePath>..\..\..\..\..\..\firmware\n32g030_std_periph_driver\src\misc.c</FilePath>
             </File>
             <File>
-              <FileName>n32g030_exti.c</FileName>
+              <FileName>n32g030_adc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\..\firmware\n32g030_std_periph_driver\src\n32g030_exti.c</FilePath>
+              <FilePath>..\..\..\..\..\..\firmware\n32g030_std_periph_driver\src\n32g030_adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>n32g030_dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\..\firmware\n32g030_std_periph_driver\src\n32g030_dma.c</FilePath>
             </File>
             <File>
               <FileName>n32g030_gpio.c</FileName>
@@ -418,6 +427,11 @@
               <FileName>n32g030_rcc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\..\firmware\n32g030_std_periph_driver\src\n32g030_rcc.c</FilePath>
+            </File>
+            <File>
+              <FileName>n32g030_usart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\..\firmware\n32g030_std_periph_driver\src\n32g030_usart.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -449,5 +463,11 @@
       </Groups>
     </Target>
   </Targets>
+
+  <RTE>
+    <apis/>
+    <components/>
+    <files/>
+  </RTE>
 
 </Project>

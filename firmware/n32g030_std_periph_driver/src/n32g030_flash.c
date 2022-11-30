@@ -28,7 +28,7 @@
 /**
  * @file n32g030_flash.c
  * @author Nations
- * @version v1.0.0
+ * @version v1.0.1
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
@@ -1116,7 +1116,7 @@ void FLASH_ClearFlag(uint32_t FLASH_FLAG)
     assert_param(IS_FLASH_CLEAR_FLAG(FLASH_FLAG));
 
     /* Clear the flags */
-    FLASH->STS |= FLASH_FLAG;
+    FLASH->STS = FLASH_FLAG;
 }
 
 /**

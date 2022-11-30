@@ -26,34 +26,48 @@
  * ****************************************************************************/
 
 /**
- * @file n32g030_it.h
+ * @file main.h
  * @author Nations 
  * @version v1.0.0
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
-#ifndef __N32G030_IT_H__
-#define __N32G030_IT_H__
+#ifndef __MAIN_H__
+#define __MAIN_H__
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 #include "n32g030.h"
+#define _USART1_COM_
+// #define _USART2_COM_
 
-void NMI_Handler(void);
-void HardFault_Handler(void);
-void SVC_Handler(void);
-void PendSV_Handler(void);
-void SysTick_Handler(void);
-void DMA_IRQ_HANDLER(void);
-void EXTI4_15_IRQHandler(void);
+#ifdef _USART1_COM_
+#define USARTx            USART1
+#define USARTx_GPIO       GPIOA
+#define USARTx_CLK        RCC_APB2_PERIPH_USART1
+#define USARTx_GPIO_CLK   RCC_APB2_PERIPH_GPIOA
+#define USARTx_RxPin      GPIO_PIN_10
+#define USARTx_TxPin      GPIO_PIN_9
+#define USARTx_Rx_GPIO_AF GPIO_AF4_USART1
+#define USARTx_Tx_GPIO_AF GPIO_AF4_USART1
+
+#define GPIO_APBxClkCmd   RCC_EnableAPB2PeriphClk
+#define USART_APBxClkCmd  RCC_EnableAPB2PeriphClk
+#endif
+
+typedef enum
+{
+    FAILED = 0,
+    PASSED = !FAILED
+} Status;
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* __N32G030_IT_H__ */
+#endif /* __MAIN_H__ */
 /**
  * @}
  */

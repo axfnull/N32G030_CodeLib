@@ -404,7 +404,7 @@ typedef enum
 #define COMP_INTSTS_INTSTS_MSK       (0x01L << 0) // This bit control Interrput enable of COMP.
 
 //COMP_INVREF
-#define COMP_INVREF_VREFSEL_MSK     (0x2FL << 1) // Vref Voltage scaler value.
+#define COMP_INVREF_VREFSEL_MSK     (0x3FL << 1) // Vref Voltage scaler value.
 #define COMP_INVREF_VREFEN_ENABLE   (0x01L << 0)
 #define COMP_INVREF_VREFEN_DISABLE  (0x00L << 0)
 

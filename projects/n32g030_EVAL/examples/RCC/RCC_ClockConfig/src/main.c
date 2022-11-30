@@ -90,7 +90,7 @@ int main(void)
 //
 //    SetSysClock_LSE();
 //    RCC_GetClocksFreqValue(&RCC_temp);
-    //DumpClock("LSE, 32.768K");
+//    DumpClock("LSE, 32.768K");
 
 
 //    SetSysClockToPLL(32000000, SYSCLK_USE_HSE);

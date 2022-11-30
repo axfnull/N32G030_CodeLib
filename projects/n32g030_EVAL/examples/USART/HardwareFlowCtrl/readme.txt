@@ -12,7 +12,7 @@ USARTz可以是USART1和USART2。
 
     软件开发环境：KEIL MDK-ARM Professional Version 5.26.2.0
 
-    硬件环境：最小系统板N32G030CL-STB V1.0
+    硬件环境：最小系统板N32G030C8L7-STB V1.0
 
 
 3、使用说明
@@ -52,3 +52,60 @@ USARTz可以是USART1和USART2。
 
 
 4、注意事项
+
+    需先将开发板NS-LINK的MCU_TX和MCU_RX跳线帽断开
+
+1. Function description
+
+    This test example demonstrates the basic communication between USARTy and USARTz using hardware flow control. USARTy and USARTz can be USART1 
+and USART2.
+    First, USARTy uses CTS to send TxBuffer1 data, USARTz uses RTS to receive data and stores it in RxBuffer2; then, USARTz uses CTS to send TxBuffer2 data, 
+and USARTy uses RTS to receive data and stores it in RxBuffer1.
+    Then, compare the received data with the sent data, and the comparison results are stored in the variables TransferStatus1 and TransferStatus2 respectively.
+
+2. Use environment
+
+    Software development environment: KEIL MDK-ARM Professional Version 5.26.2.0
+
+    Hardware environment: minimum system board N32G030C8L7-STB V1.0
+
+
+3. Instructions for use
+
+    The system clock configuration is as follows:
+    -Clock source = HSI + PLL
+    -System clock = 48MHz
+    
+    The USARTy configuration is as follows:
+    -Baud rate = 115200 baud
+    -Word length = 8 data bits
+    -1 stop bit
+    -Verification control disabled
+    -CTS hardware flow control enable
+    -Transmitter enable
+    
+    The USARTz configuration is as follows:
+    -Baud rate = 115200 baud
+    -Word length = 8 data bits
+    -1 stop bit
+    -Verification control disabled
+    -RTS hardware flow control enable
+    -Receiver enable
+    
+    
+    The USART pin connections are as follows:
+    -USART1_Tx.PA9 <-------> USART2_Rx.PA3
+    -USART1_Rx.PA10 <-------> USART2_Tx.PA2
+    -USART1_CTS.PA11 <-------> USART2_RTS.PA1
+    -USART1_RTS.PA12 <-------> USART2_CTS.PA0
+
+    
+    Test steps and phenomena:
+    -After the Demo is compiled in the KEIL environment, download it to the MCU
+    -Reset operation, check the variables TransferStatus1 and TransferStatus2 in turn,
+Among them, PASSED means the test passed and FAILED means the test is abnormal
+
+
+4. Matters needing attention
+
+    the MCU_TX and MCU_RX jumper cap of the development board NS-LINK needs to be disconnected first

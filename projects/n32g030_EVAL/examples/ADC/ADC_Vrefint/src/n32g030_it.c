@@ -61,6 +61,7 @@ void HardFault_Handler(void)
     }
 }
 
+
 /**
  * @brief  This function handles SVCall exception.
  */
@@ -82,30 +83,13 @@ void SysTick_Handler(void)
 {
 }
 
-/**
- * @brief  This function handles DMA interrupt request defined in main.h .
- */
-void DMA_IRQ_HANDLER(void)
-{
-}
-
 /******************************************************************************/
 /*                 N32G030 Peripherals Interrupt Handlers                     */
 /*  Add here the Interrupt Handler for the used peripheral(s) (PPP), for the  */
 /*  available peripheral interrupt handler's name please refer to the startup */
 /*  file (startup_n32g030.s).                                                 */
 /******************************************************************************/
-/**
- * @brief  External lines 4 to 15 interrupt.
- */
-void EXTI4_15_IRQHandler(void)
-{
-    if (RESET != EXTI_GetITStatus(KEY_INPUT_EXTI_LINE))
-    {
-        LedBlink(LED2_PORT, LED2_PIN);
-        EXTI_ClrITPendBit(KEY_INPUT_EXTI_LINE);
-    }
-}
+
 /**
  * @brief  This function handles PPP interrupt request.
  */

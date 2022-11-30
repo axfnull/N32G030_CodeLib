@@ -62,6 +62,7 @@ int main(void)
        */
     /* Enable PWR Clock */
     RCC_EnableAPB1PeriphClk(RCC_APB1_PERIPH_PWR, ENABLE);
+    /* Initialize LOG port */
     log_init();
     /* Initialize Key button Interrupt to wakeUp stop */
     //KeyInputExtiInit(KEY_INPUT_PORT, KEY_INPUT_PIN);

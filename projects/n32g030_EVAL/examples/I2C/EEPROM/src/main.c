@@ -28,7 +28,7 @@
 /**
  * @file main.c
  * @author Nations 
- * @version v1.0.0
+ * @version v1.0.1
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
@@ -73,12 +73,12 @@ int main(void)
     {
         tx_buf[i] = i;
     }
-    //log_info("Write to I2C EEPROM\r\n");
+    log_info("Write to I2C EEPROM\r\n");
     /* First write in the memory followed by a read of the written data --------*/
     /* Write to I2C EEPROM from TEST_EEPROM_ADDR */
     I2C_EE_WriteBuffer(tx_buf, TEST_EEPROM_ADDR, TEST_EEPROM_SIZE);
 
-    //log_info("Read from I2C EEPROM\r\n");
+    log_info("Read from I2C EEPROM\r\n");
     /* Read from I2C EEPROM from sEE_READ_ADDRESS1 */
     I2C_EE_ReadBuffer(rx_buf, TEST_EEPROM_ADDR, TEST_EEPROM_SIZE);
 

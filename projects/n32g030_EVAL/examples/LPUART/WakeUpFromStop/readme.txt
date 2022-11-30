@@ -8,14 +8,14 @@
     1 起始位检测，如发送唤醒数据‘5A’(Hex)
     2 接收缓冲器非空检测，如发送唤醒数据‘5A’(Hex)
     3 一个可配置的接收字节，如发送唤醒数据‘5A’(Hex)
-    4 一个科编程的4字节帧，如发送唤醒数据‘4B3C2D1E’(Hex)
+    4 一个可编程的4字节帧，如发送唤醒数据‘4B3C2D1E’(Hex)
     
 
 2、使用环境
 
     软件开发环境：KEIL MDK-ARM Professional Version 5.26.2.0
 
-    硬件环境：最小系统板N32G030CL-STB V1.0
+    硬件环境：最小系统板N32G030C8L7-STB V1.0
 
 
 3、使用说明
@@ -45,3 +45,50 @@
 
 
 4、注意事项
+
+1. Function description
+
+    This test example demonstrates how LPUART wakes up STOP mode through communication with PC.
+     The MCU enters the STOP mode, and the PC sends the correct data to wake up the MCU. When the correct wake-up event is recognized, the WUF interrupt will trigger and wake up the MCU.
+     In order to confirm whether to wake up, the MCU will send a confirmation message to the PC, and the PC will check whether it is the expected message.
+     The process will be repeated 4 times to verify different wake-up events:
+     1 Start bit detection, such as sending wake-up data ‘5A’ (Hex)
+     2 The receiving buffer is not empty detection, such as sending wake-up data ‘5A’ (Hex)
+     3 One configurable receive byte, such as sending wake-up data ‘5A’ (Hex)
+     4 One programmable 4-byte frame, such as sending wake-up data ‘4B3C2D1E’ (Hex)
+    
+
+2. Use environment
+
+    Software development environment: KEIL MDK-ARM Professional Version 5.26.2.0
+
+    Hardware environment: minimum system board N32G030C8L7-STB V1.0
+
+
+3. Instructions for use
+
+    The system clock configuration is as follows:
+    -Clock source = HSI + PLL
+    -System clock = 48MHz
+    
+    The LPUART configuration is as follows:
+    -Baud rate = 9600 baud
+    -Word length = 8 data bits (fixed)
+    -1 stop bit (fixed)
+    -Verification control disabled
+    -Hardware flow control disabled (RTS and CTS signals)
+    -Receiver and transmitter enable
+    
+    
+    The LPUART pin connections are as follows:
+    -LPUART_Tx.PA1
+    -LPUART_Rx.PA0
+
+    
+    Test steps and phenomena:
+    -After the Demo is compiled in the KEIL environment, download it to the MCU
+    -Reset operation, check the serial port print information, send the corresponding character through the serial port, wake up the MCU, and again
+      Check the serial port print information (prompt "wake up"), this step needs to be repeated 4 times
+
+
+4. Matters needing attention

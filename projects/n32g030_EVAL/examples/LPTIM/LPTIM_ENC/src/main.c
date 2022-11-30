@@ -41,18 +41,6 @@
  * @{
  */
 
-
-void LedBlink(GPIO_Module* GPIOx, uint16_t Pin);
-void LEDInit(uint16_t Pin);
-void LedOn(uint16_t Pin);
-void LedOff(uint16_t Pin);
-void Ledlink(uint16_t Pin);
-void delay(vu32 nCount);
-
-
-void EncInputIoConfig(void);
-void Lptim_EncInit(void);
-void EncWaveOutput(uint16_t count);
 uint16_t encCNT = 0;
 /**
  * @brief  Main program.
@@ -67,13 +55,12 @@ int main(void)
          system_n32g030.c file
      */
     /* Init LED GPIO */
-    LEDInit(LED1);
-    LEDInit(LED2);
+    LedInit(PORT_GROUP, LED1);
+    LedInit(PORT_GROUP, LED2);
     /* Enable the LSI source */
     RCC_EnableLsi(ENABLE);
     RCC_ConfigLPTIMClk(RCC_LPTIMCLK_SRC_LSI);  
     RCC_EnableAPB1PeriphClk(RCC_APB1_PERIPH_LPTIM | RCC_APB1_PERIPH_LPTIMPCLK,ENABLE); 
-    //RCC_LPTIMCLKCmd();
 
     /* LPTIM input1 IO Init and encoder*/
     LPTIM_SetPrescaler(LPTIM,LPTIM_PRESCALER_DIV1);
@@ -81,10 +68,10 @@ int main(void)
     Lptim_EncInit();
     /* LPTIM start count*/
     LPTIM_StartCounter(LPTIM,LPTIM_OPERATING_MODE_CONTINUOUS); 
-  /* Great 20 square waves ,and encCNT should be equal to 40*/
+    /* Great 20 square waves ,and encCNT should be equal to 40*/
     EncWaveOutput(20);
     encCNT = LPTIM->CNT;
-    //In order to make encCNT visible in watch window of debugging interface
+    /* In order to make encCNT visible in watch window of debugging interface */
     if(40 == encCNT)
     {
         delay(10);
@@ -138,63 +125,74 @@ void Lptim_EncInit(void)
     LPTIM_SetAutoReload(LPTIM,15000);
     LPTIM_SetCompare(LPTIM,10000);    
 }
-/**
- * @brief  Toggles the selected Led.
- * @param Led Specifies the Led to be toggled.
- *   This parameter can be one of following parameters:
- *     @arg LED1
- *     @arg LED2
- *     @arg LED3
- */
-void Ledlink(uint16_t Pin)
-{
-    GPIOB->POD ^= Pin;
-}
+
 /**
  * @brief  Turns selected Led on.
- * @param Led Specifies the Led to be set on.
- *   This parameter can be one of following parameters:
- *     @arg LED1
- *     @arg LED2
- *     @arg LED3
+ * @param GPIOx x can be A to G to select the GPIO port.
+ * @param Pin This parameter can be GPIO_PIN_0~GPIO_PIN_15.
  */
-void LedOn(uint16_t Pin)
+void LedOn(GPIO_Module *GPIOx, uint16_t Pin)
 {
-    GPIOB->PBC = Pin;
+    GPIO_SetBits(GPIOx, Pin);
 }
+
 /**
  * @brief  Turns selected Led Off.
- * @param Led Specifies the Led to be set off.
- *   This parameter can be one of following parameters:
- *     @arg LED1
- *     @arg LED2
- *     @arg LED3
+ * @param GPIOx x can be A to G to select the GPIO port.
+ * @param Pin This parameter can be GPIO_PIN_0~GPIO_PIN_15.
  */
-void LedOff(uint16_t Pin)
+void LedOff(GPIO_Module* GPIOx, uint16_t Pin)
 {
-    GPIOB->PBSC = Pin;
+    GPIO_ResetBits(GPIOx, Pin);
 }
+
+/**
+ * @brief  Toggles the selected Led.
+ * @param GPIOx x can be A to G to select the GPIO port.
+ * @param Pin This parameter can be GPIO_PIN_0~GPIO_PIN_15.
+ */
+void LedBlink(GPIO_Module* GPIOx, uint16_t Pin)
+{
+    GPIO_TogglePin(GPIOx, Pin);
+}
+
 /**
  * @brief  Configures LED GPIO.
- * @param Led Specifies the Led to be configured.
- *   This parameter can be one of following parameters:
- *     @arg LED1
- *     @arg LED2
+ * @param GPIOx x can be A to G to select the GPIO port.
+ * @param Pin This parameter can be GPIO_PIN_0~GPIO_PIN_15.
  */
-
-void LEDInit(uint16_t Pin)
+void LedInit(GPIO_Module* GPIOx, uint16_t Pin)
 {
     GPIO_InitType GPIO_InitStructure;
+
+    /* Check the parameters */
+    assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+
+    /* Enable the GPIO Clock */
+    if (GPIOx == GPIOA)
+    {
+        RCC_EnableAPB2PeriphClk(RCC_APB2_PERIPH_GPIOA, ENABLE);
+    }
+    else if (GPIOx == GPIOB)
+    {
+        RCC_EnableAPB2PeriphClk(RCC_APB2_PERIPH_GPIOB, ENABLE);
+    }
+    else if (GPIOx == GPIOC)
+    {
+        RCC_EnableAPB2PeriphClk(RCC_APB2_PERIPH_GPIOC, ENABLE);
+    }
+    else if (GPIOx == GPIOF)
+    {
+        RCC_EnableAPB2PeriphClk(RCC_APB2_PERIPH_GPIOF, ENABLE);
+    }
+    else
+    {
+        return;
+    }
     GPIO_InitStruct(&GPIO_InitStructure);
-    /* Enable the GPIO_LED Clock */
-    RCC_EnableAPB2PeriphClk(RCC_APB2_PERIPH_GPIOB, ENABLE);
-
-    /* Configure the GPIO_LED pin */
-    GPIO_InitStructure.Pin        = Pin;
-    GPIO_InitStructure.GPIO_Mode  = GPIO_MODE_OUTPUT_PP;
-    //GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-
-    GPIO_InitPeripheral(GPIOB, &GPIO_InitStructure);
+    GPIO_InitStructure.Pin = Pin;
+    GPIO_InitStructure.GPIO_Mode = GPIO_MODE_OUTPUT_PP;
+    GPIO_InitPeripheral(GPIOx, &GPIO_InitStructure);
 }
 
 void delay(vu32 nCount)
@@ -216,15 +214,13 @@ void EncWaveOutput(uint16_t count)
 {
     while(count--)
     {
-        LedOn(LED1);
+        LedOff(PORT_GROUP, LED1);
         delay(2);     
-        //LedOff(LED1);
-        LedOn(LED2);    
+        LedOff(PORT_GROUP, LED2);    
         delay(2);  
-        //LedOn(LED2);
-        LedOff(LED1);    
+        LedOn(PORT_GROUP, LED1);    
         delay(2);     
-        LedOff(LED2);   
+        LedOn(PORT_GROUP, LED2);   
         delay(2);          
     }
 

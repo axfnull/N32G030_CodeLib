@@ -28,7 +28,7 @@
 /**
  * @file n32g030_pwr.c
  * @author Nations 
- * @version v1.0.0
+ * @version v1.0.1
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
@@ -47,8 +47,6 @@
 
 
 #define CLR_PDSTOP_MASK               ((uint32_t)0xFFFFFFFC)
-#define CLR_PLUS_MASK                 ((uint32_t)0xFFFFFBFF)
-//#define CLR_FLPDS_MASK              ((uint32_t)0xFFFFEBFF)
 
 
 #define CTRL4_WRITE_PROTECT_ENABLE    0x01753603
@@ -138,8 +136,8 @@ void PWR_PVDLevelConfig(uint8_t PWR_PVDLevel)
 
 /**
  * @brief  Enables or disables the WakeUp Pin functionality.
- * @param the wakeup pin number.
-*   note: this program is 1 to 2 .so move start 7.
+ * @param num wakeup pin number.
+ *            num is 1, 2, 3. 1 means wkup0(PA0), 2 means wkup1(PC13), 3 means wkup2(PA2)
  * @param Cmd new state of the WakeUp Pin functionality.
  *   This parameter can be: ENABLE or DISABLE.
  */
@@ -223,31 +221,22 @@ void PWR_EnterSLEEPMode(uint8_t SLEEPONEXIT, uint8_t PWR_SLEEPEntry)
 
 /**
   * @brief  Enters STOP mode.
-  * @param  PWR_STOPeFlash: eFlash Low-power control for STOP mode.
-  *   This parameter can be one of the following values:
-  *     @arg PWR_STOPPLUSE_ENABLE: Enable keep a low power when system enters STOP mode
-  *     @arg PWR_STOPPLUSE_DISABLE: Disable keep a low power when system enters STOP mode
   * @param  PWR_STOPEntry: specifies if STOP mode in entered with WFI or WFE instruction.
   *   This parameter can be one of the following values:
   *     @arg PWR_STOPEntry_WFI: enter STOP mode with WFI instruction
   *     @arg PWR_STOPEntry_WFE: enter STOP mode with WFE instruction
   * @retval None
   */
-void PWR_EnterSTOPMode(uint32_t PWR_STOPplus, uint8_t PWR_STOPEntry)
+void PWR_EnterSTOPMode(uint8_t PWR_STOPEntry)
 {
     uint32_t tmpreg = 0;
     /* Check the parameters */
-    assert_param(IS_STOPPLUSE(PWR_STOPplus));
     assert_param(IS_PWR_STOP_ENTRY(PWR_STOPEntry));
 
     /* Select the regulator state in STOP mode ---------------------------------*/
     tmpreg = PWR->CTRL;
-    /* Clear PDDS and FLPDS bits */
+    /* Clear PDDS bits */
     tmpreg &= CLR_PDSTOP_MASK;
-    tmpreg &= CLR_PLUS_MASK;
-    /* Set FLPDS bit according to PWR_Regulator value */
-    tmpreg |= PWR_STOPplus;
-    tmpreg |= PWR_CTRL_STOP;
     /* Store the new value */
     PWR->CTRL |= tmpreg;
     /* Set SLEEPDEEP bit of Cortex System Control Register */
@@ -418,19 +407,18 @@ void PWR_ClearFlag(uint32_t PWR_FLAG)
  *   when the MCU under Debug mode.
  * @param DBG_Periph specifies the peripheral and low power mode.
  *   This parameter can be any combination of the following values:
+ *     @arg DBG_SLEEP Keep debugger connection during SLEEP mode
  *     @arg DBG_STOP Keep debugger connection during STOP mode
  *     @arg DBG_PD Keep debugger connection during PD mode
  *     @arg DBG_IWDG_STOP Debug IWDG stopped when Core is halted
  *     @arg DBG_WWDG_STOP Debug WWDG stopped when Core is halted
  *     @arg DBG_TIM1_STOP TIM1 counter stopped when Core is halted
- *     @arg DBG_TIM2_STOP TIM2 counter stopped when Core is halted
  *     @arg DBG_TIM3_STOP TIM3 counter stopped when Core is halted
- *     @arg DBG_TIM4_STOP TIM4 counter stopped when Core is halted
- *     @arg DBG_CAN_STOP Debug CAN stopped when Core is halted
  *     @arg DBG_I2C1SMBUS_TIMEOUT I2C1 SMBUS timeout mode stopped when Core is halted
  *     @arg DBG_I2C2SMBUS_TIMEOUT I2C2 SMBUS timeout mode stopped when Core is halted
- *     @arg DBG_TIM8_STOP TIM8 counter stopped when Core is halted
+ *     @arg DBG_LPTIM_STOP LPTIM counter stopped when Core is halted
  *     @arg DBG_TIM6_STOP TIM6 counter stopped when Core is halted
+ *     @arg DBG_TIM8_STOP TIM8 counter stopped when Core is halted
  * @param Cmd new state of the specified peripheral in Debug mode.
  *   This parameter can be: ENABLE or DISABLE.
  */

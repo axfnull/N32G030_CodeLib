@@ -26,14 +26,14 @@
  * ****************************************************************************/
 
 /**
- * @file main.h
+ * @file n32g030_it.h
  * @author Nations 
  * @version v1.0.0
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
-#ifndef __MAIN_H__
-#define __MAIN_H__
+#ifndef __N32G030_IT_H__
+#define __N32G030_IT_H__
 
 #ifdef __cplusplus
 extern "C" {
@@ -41,30 +41,17 @@ extern "C" {
 
 #include "n32g030.h"
 
-#define LED1_PORT GPIOB
-#define LED1_PIN  GPIO_PIN_6
-#define LED2_PORT GPIOB
-#define LED2_PIN  GPIO_PIN_7
-
-#define KEY_INPUT_PORT        GPIOA
-#define KEY_INPUT_PIN         GPIO_PIN_5
-#define KEY_INPUT_EXTI_LINE   EXTI_LINE5
-#define KEY_INPUT_PORT_SOURCE GPIOA_PORT_SOURCE
-#define KEY_INPUT_PIN_SOURCE  GPIO_PIN_SOURCE5
-#define KEY_INPUT_IRQn        EXTI4_15_IRQn
-
-void Delay(uint32_t count);
-void KeyInputExtiInit(GPIO_Module* GPIOx, uint16_t Pin);
-void LedInit(GPIO_Module* GPIOx, uint16_t Pin);
-void LedOn(GPIO_Module* GPIOx, uint16_t Pin);
-void LedOff(GPIO_Module* GPIOx, uint16_t Pin);
-void LedBlink(GPIO_Module* GPIOx, uint16_t Pin);
+void NMI_Handler(void);
+void HardFault_Handler(void);
+void SVC_Handler(void);
+void PendSV_Handler(void);
+void SysTick_Handler(void);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* __MAIN_H__ */
+#endif /* __N32G030_IT_H__ */
 /**
  * @}
  */

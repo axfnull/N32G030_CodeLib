@@ -28,7 +28,7 @@
 /**
  * @file n32g030_exti.h
  * @author Nations 
- * @version v1.0.0
+ * @version v1.0.1
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */

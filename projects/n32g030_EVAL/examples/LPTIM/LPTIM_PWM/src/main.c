@@ -40,15 +40,6 @@
 /** @addtogroup LPTIM_PWM
  * @{
  */
-
-
-void LedBlink(GPIO_Module* GPIOx, uint16_t Pin);
-void LEDInit(uint16_t Pin);
-void LedOn(uint16_t Pin);
-void LedOff(uint16_t Pin);
-void Ledlink(uint16_t Pin);
-void delay(vu32 nCount);
-
 void LPTIM_OutputIoInit(void);
 /**
  * @brief  Main program.
@@ -62,8 +53,6 @@ int main(void)
          system_n32g43x.c file
        */
 //**********************************************************
-  /* Init LED GPIO */
-    LEDInit(LED1);
     /* Enable the LSI source */
     RCC_EnableLsi(ENABLE);
     RCC_ConfigLPTIMClk(RCC_LPTIMCLK_SRC_LSI);  
@@ -83,7 +72,6 @@ int main(void)
     /* config ARR ande compare register */ 
     LPTIM_SetAutoReload(LPTIM,600);        
     LPTIM_SetCompare(LPTIM,300);
-    //while(!(LPTIM->INTSTS & LPTIM_INTSTS_CMPUPD));
     LPTIM_StartCounter(LPTIM,LPTIM_OPERATING_MODE_CONTINUOUS);  
     while (1)
     {    
@@ -108,70 +96,3 @@ void LPTIM_OutputIoInit(void)
     GPIO_InitStructure.GPIO_Alternate = GPIO_AF9_LPTIM;
     GPIO_InitPeripheral(GPIOA, &GPIO_InitStructure);
 }
-/**
- * @brief  Toggles the selected Led.
- * @param Led Specifies the Led to be toggled.
- *   This parameter can be one of following parameters:
- *     @arg LED1
- *     @arg LED2
- *     @arg LED3
- */
-void Ledlink(uint16_t Pin)
-{
-    GPIOB->POD ^= Pin;
-}
-/**
- * @brief  Turns selected Led on.
- * @param Led Specifies the Led to be set on.
- *   This parameter can be one of following parameters:
- *     @arg LED1
- *     @arg LED2
- *     @arg LED3
- */
-void LedOn(uint16_t Pin)
-{
-    GPIOB->PBC = Pin;
-}
-/**
- * @brief  Turns selected Led Off.
- * @param Led Specifies the Led to be set off.
- *   This parameter can be one of following parameters:
- *     @arg LED1
- *     @arg LED2
- *     @arg LED3
- */
-void LedOff(uint16_t Pin)
-{
-    GPIOB->PBSC = Pin;
-}
-/**
- * @brief  Configures LED GPIO.
- * @param Led Specifies the Led to be configured.
- *   This parameter can be one of following parameters:
- *     @arg LED1
- *     @arg LED2
- */
-
-void LEDInit(uint16_t Pin)
-{
-    GPIO_InitType GPIO_InitStructure;
-    GPIO_InitStruct(&GPIO_InitStructure);
-
-    /* Enable the GPIO_LED Clock */
-    RCC_EnableAPB2PeriphClk(RCC_APB2_PERIPH_GPIOB, ENABLE);
-
-    /* Configure the GPIO_LED pin */
-    GPIO_InitStructure.Pin        = Pin;
-    GPIO_InitStructure.GPIO_Mode  = GPIO_MODE_OUTPUT_PP;
-    
-
-    GPIO_InitPeripheral(GPIOB, &GPIO_InitStructure);
-}
-void delay(vu32 nCount)
-{
-    vu32 index = 0;
-    for (index = (34000 * nCount); index != 0; index--)
-    {
-    }
-}
-

@@ -28,7 +28,7 @@
 /**
  * @file n32g030_spi.h
  * @author Nations
- * @version v1.0.0
+ * @version v1.0.1
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
@@ -104,6 +104,9 @@ typedef struct
 
     uint16_t DataFormat; /*!< Specifies the data format for the I2S communication.
                                   This parameter can be a value of @ref I2S_Data_Format */
+    
+    uint16_t MCLKEnable; /*!< Specifies whether the I2S MCLK output is enabled or not.
+                                  This parameter can be a value of @ref I2S_MCLK_Output */
 
     uint32_t AudioFrequency; /*!< Specifies the frequency selected for the I2S communication.
                                  This parameter can be a value of @ref I2S_Audio_Frequency */
@@ -272,6 +275,17 @@ typedef struct
  * @}
  */
 
+/** @addtogroup I2S_MCLK_Output
+ * @{
+ */
+
+#define I2S_MCLK_ENABLE            ((uint16_t)0x0200)
+#define I2S_MCLK_DISABLE           ((uint16_t)0x0000)
+#define IS_I2S_MCLK_ENABLE(OUTPUT) (((OUTPUT) == I2S_MCLK_ENABLE) || ((OUTPUT) == I2S_MCLK_DISABLE))
+/**
+ * @}
+ */
+
 /** @addtogroup I2S_Audio_Frequency
  * @{
  */
@@ -350,6 +364,7 @@ typedef struct
 /** @addtogroup SPI_I2S_interrupts_definition
  * @{
  */
+#define SPI_STS_RESERVED_MASK     ((uint16_t)0x00FF)
 
 #define SPI_I2S_INT_TE            ((uint8_t)0x71)
 #define SPI_I2S_INT_RNE           ((uint8_t)0x60)

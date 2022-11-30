@@ -8,7 +8,7 @@
 
      软件开发环境：KEIL MDK-ARM Professional Version 5.26.2.0
 
-     硬件环境：最小系统板N32G030CL-STB V1.0
+     硬件环境：最小系统板N32G030C8L7-STB V1.0
 
 
 3、使用说明
@@ -34,3 +34,40 @@
 
 
 4、注意事项
+
+1. Function description
+
+     This test example demonstrates the basic communication between LPUART and PC by querying the detection mark.
+     Redirect the printf function to LPUART, and use the printf function to output messages to the terminal.
+
+
+2. Use environment
+
+      Software development environment: KEIL MDK-ARM Professional Version 5.26.2.0
+
+      Hardware environment: minimum system board N32G030C8L7-STB V1.0
+
+
+3. Instructions for use
+
+     The system clock configuration is as follows:
+     -Clock source = HSI + PLL
+     -System clock = 48MHz
+    
+     The LPUART configuration is as follows:
+     -Baud rate = 115200 baud
+     -Word length = 8 data bits (fixed)
+     -1 stop bit (fixed)
+     -Verification control disabled
+     -Hardware flow control disabled (RTS and CTS signals)
+     -Receiver and transmitter enable
+    
+     The LPUART pin connections are as follows:
+     -LPUART_Tx.PA1
+    
+     Test steps and phenomena:
+     -After the Demo is compiled in the KEIL environment, download it to the MCU
+     -Reset operation, view serial port print information
+
+
+4. Matters needing attention

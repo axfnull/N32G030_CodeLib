@@ -131,8 +131,8 @@ typedef struct
  * @{
  */
 #define LPUART_HFCTRL_NONE    ((uint16_t)0x0000)
-#define LPUART_HFCTRL_RTS     ((uint16_t)0x0400)
-#define LPUART_HFCTRL_CTS     ((uint16_t)0x0800)
+#define LPUART_HFCTRL_CTS     ((uint16_t)0x0400)
+#define LPUART_HFCTRL_RTS     ((uint16_t)0x0800)
 #define LPUART_HFCTRL_RTS_CTS ((uint16_t)0x0C00)
 #define IS_LPUART_HARDWARE_FLOW_CONTROL(CONTROL)                                                                        \
     (((CONTROL) == LPUART_HFCTRL_NONE) || ((CONTROL) == LPUART_HFCTRL_RTS) || ((CONTROL) == LPUART_HFCTRL_CTS)          \

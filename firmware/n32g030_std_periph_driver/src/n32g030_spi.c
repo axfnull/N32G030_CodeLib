@@ -28,7 +28,7 @@
 /**
  * @file n32g030_spi.c
  * @author Nations
- * @version v1.0.0
+ * @version v1.0.2
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
@@ -225,6 +225,7 @@ void I2S_Init(SPI_Module* SPIx, I2S_InitType* I2S_InitStruct)
     assert_param(IS_I2S_MODE(I2S_InitStruct->I2sMode));
     assert_param(IS_I2S_STANDARD(I2S_InitStruct->Standard));
     assert_param(IS_I2S_DATA_FMT(I2S_InitStruct->DataFormat));
+    assert_param(IS_I2S_MCLK_ENABLE(I2S_InitStruct->MCLKEnable));
     assert_param(IS_I2S_AUDIO_FREQ(I2S_InitStruct->AudioFrequency));
     assert_param(IS_I2S_CLKPOL(I2S_InitStruct->CLKPOL));
 
@@ -263,8 +264,17 @@ void I2S_Init(SPI_Module* SPIx, I2S_InitType* I2S_InitStruct)
         /* Get the source clock value: based on System Clock value */
         sourceclock = RCC_Clocks.SysclkFreq;
 
-        /* Compute the Real divider with a floating point */
-        tmp = (uint16_t)(((((sourceclock / (32 * packetlength)) * 10) / I2S_InitStruct->AudioFrequency)) + 5);
+         /* Compute the Real divider depending on the MCLK output state with a floating point */
+        if (I2S_InitStruct->MCLKEnable == I2S_MCLK_ENABLE)
+        {
+            /* MCLK output is enabled */
+            tmp = (uint16_t)(((((sourceclock / 256) * 10) / I2S_InitStruct->AudioFrequency)) + 5);
+        }
+        else
+        {
+            /* MCLK output is disabled */
+            tmp = (uint16_t)(((((sourceclock / (32 * packetlength)) * 10) / I2S_InitStruct->AudioFrequency)) + 5);
+        }
         
         /* Remove the floating point */
         tmp = tmp / 10;
@@ -288,8 +298,8 @@ void I2S_Init(SPI_Module* SPIx, I2S_InitType* I2S_InitStruct)
     }
 
     /* Write to SPIx I2SPREDIV register the computed value */
-    SPIx->I2SPREDIV = (uint16_t)(i2sdiv | (uint16_t)(i2sodd));
-
+    SPIx->I2SPREDIV = (uint16_t)(i2sdiv | (uint16_t)(i2sodd | (uint16_t)I2S_InitStruct->MCLKEnable));
+    
     /* Configure the I2S with the SPI_InitStruct values */
     tmpregister |= (uint16_t)(
         I2S_MODE_ENABLE
@@ -343,6 +353,9 @@ void I2S_InitStruct(I2S_InitType* I2S_InitStruct)
 
     /* Initialize the DataFormat member */
     I2S_InitStruct->DataFormat = I2S_DATA_FMT_16BITS;
+
+    /* Initialize the MCLKEnable member */
+    I2S_InitStruct->MCLKEnable = I2S_MCLK_DISABLE;
 
     /* Initialize the AudioFrequency member */
     I2S_InitStruct->AudioFrequency = I2S_AUDIO_FREQ_DEFAULT;
@@ -730,7 +743,7 @@ void SPI_I2S_ClrCRCErrFlag(SPI_Module* SPIx, uint16_t SPI_I2S_FLAG)
     assert_param(IS_SPI_I2S_CLR_FLAG(SPI_I2S_FLAG));
 
     /* Clear the selected SPI CRC Error (CRCERR) flag */
-    SPIx->STS = (uint16_t)~SPI_I2S_FLAG;
+    SPIx->STS = ((uint16_t)~SPI_I2S_FLAG) & (SPI_STS_RESERVED_MASK);
 }
 
 /**
@@ -812,7 +825,7 @@ void SPI_I2S_ClrITPendingBit(SPI_Module* SPIx, uint8_t SPI_I2S_IT)
     itpos = 0x01 << (SPI_I2S_IT & 0x0F);
 
     /* Clear the selected SPI CRC Error (CRCERR) interrupt pending bit */
-    SPIx->STS = (uint16_t)~itpos;
+    SPIx->STS = ((uint16_t)~itpos) & (SPI_STS_RESERVED_MASK);
 }
 /**
  * @}

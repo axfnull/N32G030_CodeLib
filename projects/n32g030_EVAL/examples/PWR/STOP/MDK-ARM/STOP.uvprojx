@@ -15,7 +15,7 @@
         <TargetCommonOption>
           <Device>N32G030C8</Device>
           <Vendor>Nationstech</Vendor>
-          <PackID>Nationstech.N32G030_DFP.1.0.0</PackID>
+          <PackID>Nationstech.N32G030_DFP.1.0.2</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x2000) IROM(0x08000000,0x10000) CPUTYPE("Cortex-M0") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>

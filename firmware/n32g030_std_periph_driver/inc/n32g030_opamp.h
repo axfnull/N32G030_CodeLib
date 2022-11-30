@@ -91,9 +91,9 @@ typedef enum
 typedef enum
 {
     OPAMP_CS_VMSEL_PA2        =  ((uint32_t)0x00000000),
-    OPAMP_CS_VMSEL_PA5        =  ((uint32_t)0x00004000),
-    OPAMP_CS_VMSEL_PB1        =  ((uint32_t)0x00008000),
-    OPAMP_CS_VMSEL_PB2        =  ((uint32_t)0x0000C000),
+    OPAMP_CS_VMSEL_PA5        =  ((uint32_t)0x00000040),
+    OPAMP_CS_VMSEL_PB1        =  ((uint32_t)0x00000080),
+    OPAMP_CS_VMSEL_PB2        =  ((uint32_t)0x000000C0),
 } OPAMP_CS_VMSEL;
 
 //bit:5~3
@@ -167,7 +167,7 @@ void OPAMP_SetLock(uint32_t Lock); // see @OPAMP_LOCK
 }
 #endif
 
-#endif /*__N32G030_ADC_H */
+#endif /*__N32G030_OPAMPMP_H__ */
        /**
         * @}
         */

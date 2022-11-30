@@ -15,7 +15,7 @@
         <TargetCommonOption>
           <Device>N32G030C8</Device>
           <Vendor>Nationstech</Vendor>
-          <PackID>Nationstech.N32G030_DFP.1.0.0</PackID>
+          <PackID>Nationstech.N32G030_DFP.1.0.2</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x2000) IROM(0x08000000,0x10000) CPUTYPE("Cortex-M0") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -335,7 +335,7 @@
               <MiscControls></MiscControls>
               <Define>N32G030, USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\..\..\..\..\firmware\CMSIS\core;..\..\..\..\..\..\firmware\CMSIS\device;..\..\..\..\..\..\firmware\N32G030_std_periph_driver\inc;..\inc</IncludePath>
+              <IncludePath>..\..\..\..\..\..\firmware\CMSIS\core;..\..\..\..\..\..\firmware\CMSIS\device;..\..\..\..\..\..\firmware\N32G030_std_periph_driver\inc;..\inc;..\..\..\..\bsp\inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -453,6 +453,21 @@
               <FileName>N32G030_flash.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\..\firmware\N32G030_std_periph_driver\src\N32G030_flash.c</FilePath>
+            </File>
+            <File>
+              <FileName>n32g030_usart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\..\firmware\n32g030_std_periph_driver\src\n32g030_usart.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>BSP</GroupName>
+          <Files>
+            <File>
+              <FileName>log.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\bsp\src\log.c</FilePath>
             </File>
           </Files>
         </Group>

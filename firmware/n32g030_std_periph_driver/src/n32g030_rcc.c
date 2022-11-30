@@ -28,7 +28,7 @@
 /**
  * @file n32g030_rcc.c
  * @author Nations
- * @version v1.0.0
+ * @version v1.0.2
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
@@ -127,7 +127,7 @@
 
 /* CTRLSTS register bit mask */
 #define CSR_RMRSTF_SET ((uint32_t)0x00000001)
-#define CSR_RMRSTF_Reset ((uint32_t)0xfeffffff)
+#define CSR_RMRSTF_Reset ((uint32_t)0xfffffffe)
 
 /* RCC Flag Mask */
 #define FLAG_MASK ((uint8_t)0x1F)
@@ -380,6 +380,8 @@ void RCC_EnableHsi(FunctionalState Cmd)
  * @param RCC_PLLOUTDIV specifies the PLL Out divider clock.
  *   this parameter can be one of the following values:
  *     this parameter can be RCC_PLLOUT_DIV_x where x:[1,4]
+ * @note FIN/N must be set in 4MHz to 20MHz.
+ *       FIN/N*M must be set in 48MHz to 72MHz
  */
 void RCC_ConfigPll(uint32_t RCC_PLLSource, uint32_t RCC_PLLMul, uint32_t RCC_PLLPRE, uint32_t RCC_PLLOUTDIV)
 {
@@ -648,6 +650,7 @@ void RCC_ConfigTim18Clk(uint32_t RCC_TIM18CLKSource)
  *               ...
  *     @arg RCC_ADC1MCLK_DIV31 ADC1M clock = RCC_ADC1MCLKSource_xxx/31
  *     @arg RCC_ADC1MCLK_DIV32 ADC1M clock = RCC_ADC1MCLKSource_xxx/32
+ * @note The HSI should be enabled when you want to configure HSE as RCC ADC1M CLK source.
  */
 void RCC_ConfigAdc1mClk(uint32_t RCC_ADC1MCLKSource, uint32_t RCC_ADC1MPrescaler)
 {
@@ -1314,6 +1317,8 @@ void RCC_ConfigMcoClkPre(uint32_t RCC_MCOCLKPrescaler)
  *   this parameter can be one of the following values:
  *     @arg RCC_MCO_NOCLK       No clock selected
  *     @arg RCC_MCO_SYSCLK      System clock selected
+ *     @arg RCC_MCO_LSI         LSI oscillator clock selected
+ *     @arg RCC_MCO_LSE         LSE oscillator clock selected
  *     @arg RCC_MCO_HSI         HSI oscillator clock selected
  *     @arg RCC_MCO_HSE         HSE oscillator clock selected
  *     @arg RCC_MCO_PLLCLK_PRES PLL clock prescaler

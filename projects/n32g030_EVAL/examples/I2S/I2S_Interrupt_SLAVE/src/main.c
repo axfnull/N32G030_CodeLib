@@ -28,7 +28,7 @@
 /**
  * @file main.c
  * @author Nations
- * @version v1.0.0
+ * @version v1.0.1
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
@@ -91,6 +91,7 @@ int main(void)
     /* I2S peripheral configuration */
     I2S_InitStructure.Standard       = I2S_STD_PHILLIPS;
     I2S_InitStructure.DataFormat     = I2S_DATA_FMT_16BITS_EXTENDED;
+    I2S_InitStructure.MCLKEnable     = I2S_MCLK_DISABLE;
     I2S_InitStructure.AudioFrequency = I2S_AUDIO_FREQ_48K;
     I2S_InitStructure.CLKPOL         = I2S_CLKPOL_LOW;
 
@@ -129,6 +130,7 @@ int main(void)
     /* I2S peripheral configuration */
     I2S_InitStructure.Standard       = I2S_STD_PHILLIPS;
     I2S_InitStructure.DataFormat     = I2S_DATA_FMT_24BITS;
+    I2S_InitStructure.MCLKEnable     = I2S_MCLK_DISABLE;
     I2S_InitStructure.AudioFrequency = I2S_AUDIO_FREQ_16K;
     I2S_InitStructure.CLKPOL         = I2S_CLKPOL_LOW;
 

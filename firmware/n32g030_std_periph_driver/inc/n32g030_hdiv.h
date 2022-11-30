@@ -28,7 +28,7 @@
 /**
  * @file n32g030_hdiv.h
  * @author Nations 
- * @version v1.0.0
+ * @version v1.0.1
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
@@ -84,6 +84,8 @@ extern "C" {
 /** @addtogroup HDIV_Flag
  * @{
  */
+
+#define HDIV_FLAG_INTF_MASK    ((uint32_t)0xFFFFFFEF)
 
 #define HDIV_FLAG_BUSY    ((uint32_t)0x00000004)
 #define HDIV_FLAG_DF      ((uint32_t)0x00000008)

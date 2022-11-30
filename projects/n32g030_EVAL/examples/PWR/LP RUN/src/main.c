@@ -28,13 +28,14 @@
 /**
  * @file main.c
  * @author Nations
- * @version v1.0.0
+ * @version v1.0.1
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
 #include "main.h"
 #include <stdio.h>
 #include <stdint.h>
+#include "log.h"
 #define SYSCLK_USE_HSI     0
 #define SYSCLK_USE_HSE     1
 /** @addtogroup PWR_LPRUN
@@ -63,6 +64,10 @@ int main(void)
        */
     /* Enable PWR Clock */
     RCC_EnableAPB1PeriphClk(RCC_APB1_PERIPH_PWR, ENABLE);
+    /* Initialize LOG port */
+    log_init();
+    log_info(" PWR LPRUN INIT\n");
+    
     /* Initialize LEDs on n32g030-EVAL board */
     LEDInit(LED1);
 
@@ -70,20 +75,19 @@ int main(void)
     KeyInputExtiInit(KEY_INPUT_PORT, KEY_INPUT_PIN);
     /* Set the LED in different status */
     LedOff(LED1);
-    /* Clear the EXIT Interrupt flag */
-    // EXTI_ClrITPendBit(EXTI_LINE0);
-    /*  Enable the DBG_STOP to keep debug in low power  */
-    //DBG_ConfigPeriph(DBG_PD, ENABLE);
+
     while (1)
     {
         /* Insert a long delay */
         delay(500);
         /* Set the LED */
-        Ledlink(LED1);       
+        Ledlink(LED1);
+        log_info(" LPRUN ENTRY\n");
         PWR_EnterLowPowerRunMode(PWR_LPRUN_EFLASH_ACTIVE,LSI);
         delay(1);
         PWR_ExitLowPowerRunMode();
         SetSysClockToPLL(48000000,SYSCLK_USE_HSI);
+        log_info(" LPRUN EXIT\n");
     }
 }
 

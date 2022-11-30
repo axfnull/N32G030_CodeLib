@@ -28,7 +28,7 @@
 /**
  * @file main.h
  * @author Nations 
- * @version v1.0.0
+ * @version v1.0.1
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
@@ -41,17 +41,47 @@ extern "C" {
 
 #include "n32g030.h"
 
+#define NON_REENTRANT
+
 typedef enum
 {
     FAILED = 0,
     PASSED = !FAILED
 } Status;
 
-#define DMA_CHANNEL_USED DMA1_CH1
-#define DMA_IRQ_HANDLER  DMA1_Channel1_IRQHandler
-#define DMA_IT_FLAG_TC   DMA1_INT_TXC1
-#define DMA_IT_FLAG_GL   DMA1_INT_GLB1
-#define DMA_IRQN         DMA1_Channel1_IRQn
+typedef enum
+{
+    C_READY = 0,
+    C_START_BIT,
+    C_STOP_BIT
+}CommCtrl_t;
+
+typedef enum
+{
+    MASTER_OK = 0,
+    MASTER_BUSY,
+    MASTER_MODE,
+    MASTER_TXMODE,
+    MASTER_RXMODE,
+    MASTER_SENDING,
+    MASTER_SENDED,
+    MASTER_RECVD,
+    MASTER_BYTEF,
+    MASTER_BUSERR,
+    MASTER_UNKNOW,
+    SLAVE_OK = 20,
+    SLAVE_BUSY,
+    SLAVE_MODE,
+    SLAVE_BUSERR,
+    SLAVE_UNKNOW,
+
+}ErrCode_t;
+
+#define MODULE_SELF_RESET       1
+#define MODULE_RCC_RESET        2
+#define SYSTEM_NVIC_RESET       3
+#define COMM_RECOVER_MODE       0
+
 
 #ifdef __cplusplus
 }

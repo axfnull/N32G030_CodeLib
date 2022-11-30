@@ -28,7 +28,7 @@
 /**
  * @file n32g030_pwr.h
  * @author Nations
- * @version v1.0.0
+ * @version v1.0.1
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
@@ -71,20 +71,6 @@ extern "C" {
 /**
   * @}
   */
-
-
-
-/** @defgroup Regulator_state_is_STOP_mode 
-  * @{
-  */
-
-#define PWR_STOPPLUSE_ENABLE          ((uint32_t)0x00000400)
-#define PWR_STOPPLUSE_DISABLE         ((uint32_t)0x00000000)
-#define IS_STOPPLUSE(pluse) (((pluse) == PWR_STOPPLUSE_ENABLE) || \
-                                     ((pluse) == PWR_STOPPLUSE_DISABLE))
-/**
- * @}
- */
 
 /** @defgroup SLEEP_mode_entry 
   * @{
@@ -151,7 +137,7 @@ extern "C" {
  * @{
  */
 
-
+#define DBG_SLEEP             ((uint32_t)0x00000001)
 #define DBG_STOP              ((uint32_t)0x00000002)
 #define DBG_PD                ((uint32_t)0x00000004)
 #define DBG_IWDG_STOP         ((uint32_t)0x00000100)
@@ -159,12 +145,12 @@ extern "C" {
 #define DBG_TIM1_STOP         ((uint32_t)0x00000400)
 
 #define DBG_TIM3_STOP         ((uint32_t)0x00001000)
-#define DBG_TIM4_STOP         ((uint32_t)0x00002000)
-#define DBG_CAN_STOP          ((uint32_t)0x00004000)
 #define DBG_I2C1SMBUS_TIMEOUT ((uint32_t)0x00008000)
 #define DBG_I2C2SMBUS_TIMEOUT ((uint32_t)0x00010000)
-#define DBG_TIM8_STOP         ((uint32_t)0x00020000)
-#define DBG_TIM6_STOP         ((uint32_t)0x00080000)
+#define DBG_LPTIM_STOP        ((uint32_t)0x00020000)
+#define DBG_TIM6_STOP         ((uint32_t)0x00040000)
+#define DBG_TIM8_STOP         ((uint32_t)0x00100000)
+
 
 /** @addtogroup wakeup pin polarity
  * @{
@@ -188,7 +174,7 @@ void PWR_PVDLevelConfig(uint8_t PWR_PVDLevel);
 void PWR_WakeUpPinEnable(uint8_t num,FunctionalState Cmd);
 void PWR_WakeUpPinPolarity(uint8_t polarity);
 void PWR_EnterSLEEPMode(uint8_t SLEEPONEXIT, uint8_t PWR_STOPEntry);
-void PWR_EnterSTOPMode(uint32_t PWR_STOPeFlash, uint8_t PWR_STOPEntry);
+void PWR_EnterSTOPMode(uint8_t PWR_STOPEntry);
 void PWR_EnterLowPowerRunMode(uint32_t PWR_LPRUNeFlash,uint8_t clk);
 void PWR_ExitLowPowerRunMode(void);
 void PWR_EnterPDMode(uint8_t PWR_PDEntry);

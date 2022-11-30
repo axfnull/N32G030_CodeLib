@@ -28,7 +28,7 @@
 /**
  * @file n32g030_sqrt.c
  * @author Nations 
- * @version v1.0.0
+ * @version v1.0.1
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
@@ -94,15 +94,19 @@
  */
 void SQRT_ConfigInt(FunctionalState Cmd)
 {
+    uint32_t tmpreg = 0x00;
     assert_param(IS_FUNCTIONAL_STATE(Cmd));
 
+    tmpreg = SQRT->CTRLSTS;
     if (Cmd != DISABLE)
     {
-        SQRT->CTRLSTS |= SQRT_INT_ENABLE;
+        tmpreg = (tmpreg | SQRT_INT_ENABLE) & SQRT_FLAG_INTF_MASK;
+        SQRT->CTRLSTS = tmpreg;
     }
     else
     {
-        SQRT->CTRLSTS &= (~SQRT_INT_ENABLE);
+        tmpreg = tmpreg & (~SQRT_INT_ENABLE) & SQRT_FLAG_INTF_MASK;
+        SQRT->CTRLSTS = tmpreg;
     }
 }
 
@@ -201,15 +205,20 @@ uint32_t SQRT_GetROOT_Data(void)
  */
 void SQRT_Start(FunctionalState Cmd)
 {
+    uint32_t tmpreg = 0x00;
+    
+    tmpreg = SQRT->CTRLSTS;
     if (Cmd != DISABLE)
     {
+        tmpreg = (tmpreg | (SQRT_ENABLE | SQRT_START_ENABLE)) & SQRT_FLAG_INTF_MASK;
         /* Start SQRT Calculation */
-        SQRT->CTRLSTS |= (SQRT_ENABLE | SQRT_START_ENABLE);
+        SQRT->CTRLSTS = tmpreg;
     }
     else
     {
+        tmpreg = tmpreg & (~(SQRT_ENABLE | SQRT_START_ENABLE)) & SQRT_FLAG_INTF_MASK;
         /* End SQRT Calculation */
-        SQRT->CTRLSTS &= (~(SQRT_ENABLE | SQRT_START_ENABLE));
+        SQRT->CTRLSTS = tmpreg;
     }
 }
 

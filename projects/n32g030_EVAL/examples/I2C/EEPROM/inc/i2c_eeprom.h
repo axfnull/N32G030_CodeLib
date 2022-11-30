@@ -28,7 +28,7 @@
 /**
  * @file i2c_eeprom.h
  * @author Nations
- * @version v1.0.0
+ * @version v1.0.1
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
@@ -97,9 +97,5 @@ void I2C_EE_ReadBuffer(u8* pBuffer, u16 ReadAddr, u16 NumByteToRead);
 void I2C_EE_WaitOperationIsCompleted(void);
 void I2C_EE_WaitEepromStandbyState(void);
 
-void i2c1_evt_handle(void);
-void i2c1_err_handle(void);
-void i2c1_send_dma_handle(void);
-void i2c1_receive_dma_handle(void);
 
 #endif /* __I2C_EEPROM_H__ */

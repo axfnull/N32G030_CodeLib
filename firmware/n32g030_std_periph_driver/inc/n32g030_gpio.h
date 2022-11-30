@@ -28,7 +28,7 @@
 /**
  * @file n32g030_gpio.h
  * @author Nations
- * @version v1.0.0
+ * @version v1.0.1
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
@@ -408,7 +408,8 @@ typedef enum
 #define GPIO_AF11         ((uint8_t)0x0BU)
 #define GPIO_AF11_LPUART  (GPIO_AF11)  /* LPUART Alternate Function mapping */
 #define GPIO_AF11_BEEPER  (GPIO_AF11)  /* BEEPER Alternate Function mapping */
-#define GPIO_AF11_RTC     (GPIO_AF11)  /*RTC Alternate Function mapping */
+#define GPIO_AF11_RTC     (GPIO_AF11)  /* RTC Alternate Function mapping */
+#define GPIO_AF11_MCO     (GPIO_AF11)  /* RCC MCO Alternate Function mapping */
 
 /*
  * Alternate function AF12

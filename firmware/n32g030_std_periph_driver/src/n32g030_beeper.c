@@ -130,19 +130,11 @@ void BEEPER_Config(FunctionalState Cmd,uint32_t buzz_lprun)
     uint32_t tmpregister = 0;
     /* Check the parameters */
     assert_param(IS_BEEPER_RUN_MODE(buzz_lprun));
+	
     tmpregister = BEEPER->CTRL;
-    
-    if((RCC->APB1PCLKEN & RCC_APB1PCLKEN_PWREN) == 0)
-    {
-        /* Enable PWR Clock */
-        RCC_EnableAPB1PeriphClk(RCC_APB1_PERIPH_PWR, ENABLE);
-    }
     
     if ((Cmd != DISABLE) && (buzz_lprun == BEEPER_LPRUN_MODE))
     {
-        /*Enter LowPowerRun mode*/
-        PWR_EnterLowPowerRunMode(PWR_LPRUN_EFLASH_ACTIVE,LSE);
-
         tmpregister |= buzz_lprun;
         /*Enable BEEPER*/
         tmpregister |= BEEPER_BUZZER_BUZZER_ENABLE;
@@ -151,10 +143,6 @@ void BEEPER_Config(FunctionalState Cmd,uint32_t buzz_lprun)
     }
     else if((Cmd != DISABLE) && (buzz_lprun == BEEPER_NORMAL_MODE))
     {
-        if((PWR->CTRL4 & PWR_CTRL4_LPRUNSTS) != 0)
-        {
-            PWR_ExitLowPowerRunMode();
-        }
         /*Enter normal mode*/
         tmpregister |= buzz_lprun;
         /*Enable BEEPER*/

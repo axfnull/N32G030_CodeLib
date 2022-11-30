@@ -316,6 +316,7 @@
           <state>$PROJ_DIR$\..\..\..\..\..\..\firmware\CMSIS\core</state>
           <state>$PROJ_DIR$\..\..\..\..\..\..\firmware\CMSIS\device</state>
           <state>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc</state>
+          <state>$PROJ_DIR$\..\..\..\..\..\..\projects\n32g030_EVAL\bsp\inc</state>
         </option>
         <option>
           <name>CCStdIncCheck</name>
@@ -967,6 +968,12 @@
     </settings>
   </configuration>
   <group>
+    <name>BSP</name>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\bsp\src\log.c</name>
+    </file>
+  </group>
+  <group>
     <name>CMSIS</name>
     <file>
       <name>$PROJ_DIR$\..\..\..\..\..\..\firmware\CMSIS\device\system_n32g030.c</name>
@@ -991,6 +998,9 @@
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g030_std_periph_driver\src\n32g030_rcc.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g030_std_periph_driver\src\n32g030_usart.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\..\..\..\..\..\firmware\n32g030_std_periph_driver\src\n32g030_wwdg.c</name>

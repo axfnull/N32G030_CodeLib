@@ -1,0 +1,69 @@
+Nationstech.N32G030_Library.1.0.1版本：
+1.增加IAR工程
+2.调整代码格式
+3.ADC驱动代码增加ADC_ConfigOPAControl函数和ADC_ConfigOPASetUpTime函数以及相应宏定义
+
+Nationstech.N32G030_Library.1.1.0版本：
+1. OPAMP的VMSEL宏定义修改
+2. RCC中ADC 1MCLK选择的宏定义修改
+4. ADC 温度传感器及BG通道使能改写
+5. ADC Demo中HSI使能后应等到稳定
+6. LPTIM Demo Led函数GPIO拉反，修改代码并优化代码风格
+7. WWDG新增打印
+8. GPIO增加MCO输出口PA9
+9. PWR删除STOP+模式
+10. I2C EEPROM demo修改单字节通讯问题
+11. I2C主从机demo优化
+12. I2S添加MCLK参数
+14. LPUART 低功耗唤醒demo修改
+15. 各模块清中断标志函数修改后测试（包括ADC、Flash、HDIV、I2C、RTC、SPI、SQRT、TIM、USART）
+
+Nationstech.N32G030_Library.1.1.1版本：
+1.修改SPI Flash Demo里的W25Q网区擦除指令为0x20
+2.修改Beeper驱动，删除调用系统进入/退出LPRUN模式的代码，防止Beeper进入Beeper的LPRUN而使整个系统进入系统LPRUN
+3.修改TIM的example中的注释
+4.修改RCC_CFG_SCLKSE的宏定义
+5.修改COMP_INVREF_VREFSEL_MSK的宏定义
+6. I2C EEPROM例程优化中断/DMA方式
+7. LPUART驱动修改RTSEN\CTSEN宏定义
+8. 增加内部通道Vrefint的采样demo
+9. CompOut demo中增加中断的配置
+10.修改RTC calendar初始化函数，增加初始化间隔1S
+11.TIM驱动中OCxM改成OCxMD
+12.RCC驱动添加FIN/N*M及FIN/N限制,超范围编译报错
+13.OpaAdByTim的demo修改ADC1M时钟源为HSI
+
+Nationstech.N32G030_Library.1.0.1 version :
+1. Add IAR Project
+2. Adjust the code format
+3. ADC driver code adds ADC_ ConfigOPAControl function and ADC_ ConfigOPASetUpTime function and corresponding macro definition
+
+Nationstech.N32G030_Library.1.1.0 version：
+1. VMSEL macro definition modification for OPAMP
+2. Macro Definition Modification of ADC 1MCLK Selection in RCC
+4. ADC temperature sensor and BG channel enable rewriting
+5. HSI enabled in ADC Demo should wait until stable
+6. LPTIM demo Led function GPIO reversal, modify code and optimize code style
+7. WWDG add printing
+8. GPIO increases MCO output PA9
+9. PWR delete STOP+Mode
+10. I2C EEPROM demo modifies single byte communication Problems
+11. I2C master-slave demo optimization
+12. I2S add MCLK parameter
+14. LPUART low power wake-up demo modification
+15. After each module clear interrupt flag function modification test (including ADC, Flash, HDIV, I2C, RTC, SPI, SQRT, TIM, USART)
+
+Nationstech.N32G030_Library.1.1.1 version：
+1. Modify W25Q zone erase instructions in SPI Flash Demo to 0x20
+2. Modify the Beeper driver, delete the code that calls the system into/out of LPRUN mode, prevent Beeper from entering Beeper's LPRUN and bring the whole system into the system LPRUN
+3. Modify remark in TIM's example
+4. Modify RCC_CFG_Macro Definition of SCLKSE
+5. Modify macor of COMP_INVREF_VREFSEL_MSK
+6. I2C EEPROM example optimizes interrupt/DMA mode
+7. Lpuart driver modifies RTSEN\CTSEN macro definition
+8. Added internal channel Vrefint sample demo
+9. Added interrupt configuration in CompOut demo
+10. Modify RTC calendar init function, Add init interval of 1S
+11. Modify OCxM to OCxMD in TIM driver
+12.RCC driver add FIN/N*M and FIN/N limit, an error was reported for over-range compilation
+13. Modify the clock source of ADC1M is from HSI

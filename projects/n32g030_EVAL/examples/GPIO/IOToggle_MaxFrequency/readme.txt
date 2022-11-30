@@ -1,4 +1,4 @@
-a1、功能说明
+1、功能说明
 
 	1、此例程展示 IO 电平快速翻转
 
@@ -14,8 +14,8 @@ a1、功能说明
 3、使用说明
 	
 	/* 描述相关模块配置方法；例如:时钟，I/O等 */
-        SystemClock：48MHz
-        GPIO：PA0 引脚电平快速翻转
+         1、 SystemClock：48MHz
+         2、 GPIO：PA0 引脚电平快速翻转
 
 
 	/* 描述Demo的测试步骤和现象 */
@@ -24,4 +24,26 @@ a1、功能说明
 
 
 4、注意事项
-	无
+     无
+
+
+1. Function description
+    1. This routine shows IO level flipping quickly
+2. Use environment
+    /* Software development environment: the name and version number of the software tool used in the current project */
+    Software development environment: 
+    		KEIL MDK-ARM 5.21.1.0
+		
+    /* Hardware environment: the development hardware platform corresponding to the project */
+    Hardware Environment: 
+    	Developed based on N32G030CL-STB V1.0
+3. Instructions for use
+    System Configuration;
+        1. SystemClock: 48MHz
+        2. GPIO: the level of the PA0 pin flips quickly
+
+    Instructions:
+        1. After compiling, download the program to reset and run
+        2. Use an oscilloscope to see the PA0 pin level flips quickly
+4. Matters needing attention
+    No

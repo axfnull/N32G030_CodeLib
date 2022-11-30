@@ -1,8 +1,8 @@
 1、功能说明
     1、TIM1 CH4触发ADC注入采样OPA的电压数据，并且TIM1输出受COMP1刹车控制
 2、使用环境
-    软件开发环境：  KEIL MDK-ARM V5.26.2.0
-    硬件环境：      基于N32G030CL-STB V1.0开发
+     软件开发环境：KEIL MDK-ARM V5.30.0.0
+     硬件环境：      基于N32G030C8L7-STB V1.0开发
 3、使用说明
     系统配置；
         1、时钟源：
@@ -37,3 +37,43 @@
         2、改变COMP1 的输出状态或者PB12引脚电压可以刹车TIM1，改变OPA的输入电压可以改变ADC读取的数据
 4、注意事项
     无
+
+
+1. Function description
+    1. TIM1 CH4 triggers ADC to inject the voltage data of sampled OPA, and TIM1 output is controlled by COMP1 brake
+2. Use environment
+    Software development environment: KEIL MDK-ARM V5.30.0.0
+    Hardware Environment: Developed based on the development board N32G030C8L7-STB V1.0
+3. Instructions for use
+    System Configuration;
+        1. Clock source:
+                    HSE=8M, PLL=48M, AHB=48M, APB1=48M, APB2=48M, ADC CLK=48M/16, ADC 1M CLK=HSE/8,
+                    OPA CLK=48M, COMP CLK=48M, TIM1 CLK=48M, TIM8 CLK=48M
+        2. Interrupt:
+                     Enable the ADC injection interrupt, priority 0
+                     Read conversion result
+        3. Port configuration:
+                    PA0 is selected as analog function, OPA VP
+                    PA6 is selected as analog function, OPA OUT
+                    PA1 is selected as analog function, COMP1 INP
+                    PA4 is selected as analog function, COMP1 INM
+                    PA12 is selected as analog function, COMP1 OUT
+                    PA8 is selected as TIM1 CH1 output
+                    PA9 is selected as TIM1 CH2 output
+                    PA10 is selected as TIM1 CH3 output
+                    PB13 is selected as TIM1 CH1 output
+                    PB14 is selected as TIM1 CH2 output
+                    PB15 is selected as TIM1 CH3 output
+                    PB12 is selected as TIM1 Breakin output
+                    PA6 is selected as ADC_CH6 channel input
+        4. OPA:
+                    OPA voltage follower function, VM no pins
+        5. ADC:
+                    ADC injection mode, scan conversion, TIM1 CC4 trigger, 12-bit data right-justified, injection conversion OPA output analog voltage data
+        6. TIM:
+                    TIM1 6-channel complementary open, brake enable and open interrupt, CH4 trigger output
+    Instructions:
+        1. After compiling, open the debug mode, and use an oscilloscope or logic analyzer to observe the output waveform of TIM1 and the acquired data read by the ADC
+        2. Changing the output state of COMP1 or the voltage of PB12 pin can brake TIM1, and changing the input voltage of OPA can change the data read by ADC
+4. Matters needing attention
+   None

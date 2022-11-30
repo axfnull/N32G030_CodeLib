@@ -28,7 +28,7 @@
 /**
  * @file n32g030_adc.h
  * @author Nations 
- * @version v1.0.0
+ * @version v1.0.2
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
@@ -287,6 +287,7 @@ typedef struct
 /** @addtogroup ADC_flags_definition
  * @{
  */
+#define ADC_STS_RESERVE_MASK ((uint32_t)0x0000007F)
 
 #define ADC_FLAG_AWDG      ((uint8_t)0x01)
 #define ADC_FLAG_ENDC      ((uint8_t)0x02)
@@ -498,6 +499,8 @@ void ADC_ConfigAnalogWatchdogWorkChannelType(ADC_Module* ADCx, uint32_t ADC_Anal
 void ADC_ConfigAnalogWatchdogThresholds(ADC_Module* ADCx, uint16_t HighThreshold, uint16_t LowThreshold);
 void ADC_ConfigAnalogWatchdogSingleChannel(ADC_Module* ADCx, uint8_t ADC_Channel);
 void ADC_EnableTempSensorVrefint(FunctionalState Cmd);
+void ADC_EnableTempSensor(FunctionalState Cmd);
+void ADC_EnableVrefint(FunctionalState Cmd);
 FlagStatus ADC_GetFlagStatus(ADC_Module* ADCx, uint8_t ADC_FLAG);
 void ADC_ClearFlag(ADC_Module* ADCx, uint8_t ADC_FLAG);
 INTStatus ADC_GetIntStatus(ADC_Module* ADCx, uint16_t ADC_IT);

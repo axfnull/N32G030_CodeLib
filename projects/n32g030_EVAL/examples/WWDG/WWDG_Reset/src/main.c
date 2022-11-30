@@ -28,12 +28,13 @@
 /**
  * @file main.c
  * @author Nations
- * @version v1.0.0
+ * @version v1.0.1
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
 #include "main.h"
 #include "n32g030.h"
+#include "log.h"
 
 /** @addtogroup n32g030_StdPeriph_Examples
  * @{
@@ -122,6 +123,8 @@ int main(void)
          To reconfigure the default setting of SystemInit() function, refer to
          system_n32g030.c file
        */
+    log_init();
+    log_info("--- WWDG demo reset ---\n");
     WWDG_ClrEWINTF();
     LedInit(GPIOA, LED1 | LED2);
     LedOff(GPIOA, LED1 | LED2);
@@ -135,7 +138,7 @@ int main(void)
         /* WWDGRST flag set */
         /* Turn on LED1 */
         LedOn(GPIOA, LED1);
-
+        log_info("reset by WWDG\n");
         /* Clear reset flags */
         RCC_ClrFlag();
     }
@@ -154,11 +157,19 @@ int main(void)
             ;
     }
 
+    /*
+      When the window value is very small, the system is in a frequent reset state,
+      at this time, easy to cause the program can not download normally.
+      Add a delay of 1 second here to avoid this phenomenon. Of course,
+      it can also be downloaded without delay, directly pull the pin of BOOT0 high.
+    */
+    Delay(1000);
+    
     /* WWDG configuration */
     /* Enable WWDG clock */
     RCC_EnableAPB1PeriphClk(RCC_APB1_PERIPH_WWDG, ENABLE);
 
-    /* WWDG clock counter = (PCLK1(36MHz)/4096)/8 = (~680 us)  */
+    /* WWDG clock counter = (PCLK1(48MHz)/4096)/8 = (~680 us)  */
     WWDG_SetPrescalerDiv(WWDG_PRESCALER_DIV8);
 
     /* Set Window value to 80; WWDG counter should be refreshed only when the counter

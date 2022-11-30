@@ -28,7 +28,7 @@
 /**
  * @file n32g030_adc.c
  * @author Nations 
- * @version v1.0.0
+ * @version v1.0.2
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
@@ -114,11 +114,15 @@
 #define CTRL2_INJ_EXT_TRIG_JSWSTART_RESET ((uint32_t)0xFFDF7FFF)
 
 /* ADC TSPD mask */
-#define CTRL2_TSVREFE_SET   ((uint32_t)0x00800000)
-#define CTRL2_TSVREFE_RESET ((uint32_t)0xFF7FFFFF)
+#define CTRL2_TS_SET   ((uint32_t)0x00800000)
+#define CTRL2_TS_RESET ((uint32_t)0xFF7FFFFF)
 
 /* CTRL2 register Mask */
 #define CTRL2_CLR_MASK ((uint32_t)0xFFF1F7FD)   //Clear CONT, ALIGN and EXTSEL bits
+
+/* ADC VREFINT ENABLE mask */
+#define CTRL3_VREFEINTEN_SET   ((uint32_t)0x00000002)
+#define CTRL3_VREFEINTEN_RESET ((uint32_t)0xFFFFFFFD)
 
 /* ADC SQx mask */
 #define SQR4_SEQ_SET ((uint32_t)0x0000000F)
@@ -1042,7 +1046,8 @@ void ADC_ConfigAnalogWatchdogSingleChannel(ADC_Module* ADCx, uint8_t ADC_Channel
 }
 
 /**
- * @brief  Enables or disables the temperature sensor and Vrefint channel.
+ * @brief  Enables or disables the temperature sensor channel.
+           Old funciton interface,for compatibility
  * @param Cmd new state of the temperature sensor.
  *   This parameter can be: ENABLE or DISABLE.
  */
@@ -1053,12 +1058,55 @@ void ADC_EnableTempSensorVrefint(FunctionalState Cmd)
     if (Cmd != DISABLE)
     {
         /* Enable the temperature sensor and Vrefint channel*/
-        ADC->CTRL2 |= CTRL2_TSVREFE_SET;
+        ADC->CTRL2 |= CTRL2_TS_SET;
     }
     else
     {
         /* Disable the temperature sensor and Vrefint channel*/
-        ADC->CTRL2 &= CTRL2_TSVREFE_RESET;
+        ADC->CTRL2 &= CTRL2_TS_RESET;
+    }
+}
+
+/**
+ * @brief  Enables or disables the temperature sensor channel.
+ * @param Cmd new state of the temperature sensor.
+ *   This parameter can be: ENABLE or DISABLE.
+ */
+void ADC_EnableTempSensor(FunctionalState Cmd)
+{
+    /* Check the parameters */
+    assert_param(IS_FUNCTIONAL_STATE(Cmd));
+    if (Cmd != DISABLE)
+    {
+        /* Enable the temperature sensor channel*/
+        ADC->CTRL2 |= CTRL2_TS_SET;
+    }
+    else
+    {
+        /* Disable the temperature sensor channel*/
+        ADC->CTRL2 &= CTRL2_TS_RESET;
+    }
+}    
+/**
+ * @brief  Enables or disables the Vrefint channel.
+ * @param Cmd new state of the Vrefint channel.
+ *   This parameter can be: ENABLE or DISABLE.
+ */
+void ADC_EnableVrefint(FunctionalState Cmd)
+{
+    /* Check the parameters */
+    assert_param(IS_FUNCTIONAL_STATE(Cmd));
+    /* Check the parameters */
+    assert_param(IS_FUNCTIONAL_STATE(Cmd));
+    if (Cmd != DISABLE)
+    {
+        /* Enable the temperature sensor and Vrefint channel*/
+        ADC->CTRL3 |= CTRL3_VREFEINTEN_SET;
+    }
+    else
+    {
+        /* Disable the temperature sensor and Vrefint channel*/
+        ADC->CTRL3 &= CTRL3_VREFEINTEN_RESET;
     }
 }
 
@@ -1112,7 +1160,7 @@ void ADC_ClearFlag(ADC_Module* ADCx, uint8_t ADC_FLAG)
     assert_param(IsAdcModule(ADCx));
     assert_param(IsAdcClrFlag(ADC_FLAG));
     /* Clear the selected ADC flags */
-    ADCx->STS &= ~(uint32_t)ADC_FLAG;
+    ADCx->STS = (~(uint32_t)ADC_FLAG) & (ADC_STS_RESERVE_MASK);
 }
 
 /**
@@ -1168,8 +1216,8 @@ void ADC_ClearIntPendingBit(ADC_Module* ADCx, uint16_t ADC_IT)
     assert_param(IsAdcInt(ADC_IT));
     /* Get the ADC IT index */
     itmask = (uint8_t)(ADC_IT >> 8);
-    /* Clear the selected ADC interrupt pending bits */
-    ADCx->STS &= ~(uint32_t)itmask;
+    /* Clear the selected ADC interrupt pending bits, write 0 to reserve bit*/
+    ADCx->STS = (~(uint32_t)itmask) & (ADC_STS_RESERVE_MASK);
 }
 
 /**

@@ -28,7 +28,7 @@
 /**
  * @file main.c
  * @author Nations
- * @version v1.0.0
+ * @version v1.0.1
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
@@ -123,6 +123,7 @@ int main(void)
     /* I2S peripheral configuration */
     I2S_InitStructure.Standard       = I2S_STD_PHILLIPS;
     I2S_InitStructure.DataFormat     = I2S_DATA_FMT_16BITS_EXTENDED;
+    I2S_InitStructure.MCLKEnable     = I2S_MCLK_DISABLE;
     I2S_InitStructure.AudioFrequency = I2S_AUDIO_FREQ_48K;
     I2S_InitStructure.CLKPOL         = I2S_CLKPOL_LOW;
 
@@ -142,6 +143,10 @@ int main(void)
 
     /* Wait for DMA channel3 transfer complete */
     while (!DMA_GetFlagStatus(I2S_MASTER_Tx_DMA_FLAG, DMA))
+        ;
+    
+    /* Wait for I2S transfer complete */
+    while(SPI_I2S_GetStatus(I2S_MASTER, SPI_I2S_BUSY_FLAG))
         ;
 
     /* I2S_MASTER_Rx_DMA_Channel configuration ---------------------------------------------*/
@@ -182,6 +187,7 @@ int main(void)
     /* Wait for DMA channel2 transfer complete */
     while (!DMA_GetFlagStatus(I2S_MASTER_Rx_DMA_FLAG, DMA))
         ;
+    I2S_Enable(I2S_MASTER, DISABLE);
     /* Check the correctness of written data */
     TransferStatus = Buffercmp(I2S_MASTER_Buffer_Rx, (uint16_t*)I2S_MASTER_Buffer_Tx, BufferSize);
     /* TransferStatus = PASSED, if the transmitted and received data

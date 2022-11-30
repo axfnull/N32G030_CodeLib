@@ -28,7 +28,7 @@
 /**
  * @file main.c
  * @author Nations
- * @version v1.0.0
+ * @version v1.0.1
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
@@ -110,6 +110,7 @@ int main(void)
     /* I2S peripheral configuration */
     I2S_InitStructure.Standard       = I2S_STD_PHILLIPS;
     I2S_InitStructure.DataFormat     = I2S_DATA_FMT_16BITS_EXTENDED;
+    I2S_InitStructure.MCLKEnable     = I2S_MCLK_DISABLE;
     I2S_InitStructure.AudioFrequency = I2S_AUDIO_FREQ_48K;
     I2S_InitStructure.CLKPOL         = I2S_CLKPOL_LOW;
 
@@ -174,6 +175,10 @@ int main(void)
 
     /* Wait for DMA channel3 transfer complete */
     while (!DMA_GetFlagStatus(I2S_SLAVE_Tx_DMA_FLAG, DMA))
+        ;
+    
+    /* Wait for I2S transfer complete */
+    while(SPI_I2S_GetStatus(I2S_SLAVE, SPI_I2S_BUSY_FLAG))
         ;
     
     if(TransferStatus == PASSED)
@@ -264,9 +269,9 @@ void GPIO_Configuration(void)
     /* Configure SPI1 pins: CK, WS and SD ---------------------------------*/
     GPIO_InitStructure.Pin        = GPIO_PIN_4 | GPIO_PIN_5 | GPIO_PIN_7;
     GPIO_InitStructure.GPIO_Mode  = GPIO_MODE_AF_PP;
-		GPIO_InitStructure.GPIO_Pull = GPIO_NO_PULL;
-		GPIO_InitStructure.GPIO_Speed = GPIO_SPEED_HIGH;
-		GPIO_InitStructure.GPIO_Alternate = GPIO_AF0_I2S;
+    GPIO_InitStructure.GPIO_Pull  = GPIO_NO_PULL;
+    GPIO_InitStructure.GPIO_Speed = GPIO_SPEED_HIGH;
+    GPIO_InitStructure.GPIO_Alternate = GPIO_AF0_I2S;
     GPIO_InitPeripheral(GPIOA, &GPIO_InitStructure);
 }
 
