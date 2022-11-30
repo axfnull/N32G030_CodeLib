@@ -28,7 +28,7 @@
 /**
  * @file n32g030_rcc.c
  * @author Nations
- * @version v1.0.2
+ * @version v1.0.3
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
@@ -403,7 +403,7 @@ void RCC_ConfigPll(uint32_t RCC_PLLSource, uint32_t RCC_PLLMul, uint32_t RCC_PLL
     /* Set the PLL configuration bits */
     if((RCC_PLLSource == RCC_PLL_SRC_HSI) || (RCC_PLLSource == RCC_PLL_SRC_HSE))
     {
-        tmpregister |= (RCC_PLLMul | RCC_PLLPRE | RCC_PLLOUTDIV);
+        tmpregister |= (RCC_PLLSource | RCC_PLLMul | RCC_PLLPRE | RCC_PLLOUTDIV);
     }
     /* (RCC_PLLSource == RCC_PLL_SRC_BP) */
     else

@@ -28,7 +28,7 @@
 /**
  * @file n32g030_tim.c
  * @author Nations 
- * @version v1.0.1
+ * @version v1.1.2
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
@@ -1028,8 +1028,7 @@ void TIM_GenerateEvent(TIM_Module* TIMx, uint16_t TIM_EventSource)
  *          TIM_DMABASE_CNT, TIM_DMABASE_PSC, TIM_DMABASE_AR,
  *          TIM_DMABASE_REPCNT, TIM_DMABASE_CAPCMPDAT1, TIM_DMABASE_CAPCMPDAT2,
  *          TIM_DMABASE_CAPCMPDAT3, TIM_DMABASE_CAPCMPDAT4, TIM_DMABASE_BKDT,
- *          TIM_DMABASE_CAPCMPMOD3, TIM_DMABASE_CAPCMPDAT5, TIM_DMABASE_CAPCMPDAT6,
- *          TIM_DMABASE_DMACTRL.
+ *          TIM_DMABASE_DMACTRL. 
  * @param TIM_DMABurstLength DMA Burst length.
  *   This parameter can be one value between:
  *   TIM_DMABURST_LENGTH_1TRANSFER and TIM_DMABURST_LENGTH_18TRANSFERS.

@@ -311,7 +311,8 @@ void ADC_SampleConfig(void)
         ;
 
     /*Enable Temp and Vrefint*/
-    ADC_EnableTempSensorVrefint(ENABLE);
+	ADC_EnableTempSensor(ENABLE);
+    ADC_EnableVrefint(ENABLE);
 
     /*ADC1 Injected group of conversions end and Analog Watchdog interruptsenabling */
     ADC_ConfigInt(ADC, ADC_INT_JENDC | ADC_INT_AWD, ENABLE);

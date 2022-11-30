@@ -1,0 +1,370 @@
+Dependencies for Project 'WakeUp', Target 'N32G030': (DO NOT MODIFY !)
+F (..\..\..\..\..\..\firmware\CMSIS\device\startup\startup_n32g030.s)(0x62D1173A)(--cpu Cortex-M0 --pd "__EVAL SETA 1" -g --apcs=interwork --pd "__MICROLIB SETA 1"-ID:\SVN\NS3603\Nationstech.N32G030_Library.1.1.1\projects\n32g030_EVAL\examples\LPTIM\LPTIM_WakeUp\MDK-ARM\RTE-IC:\Keil_v5\ARM\PACK\Nationstech\N32G030_DFP\1.0.3\firmware\CMSIS\device-IC:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 521" --pd "N32G030 SETA 1" --pd "USE_STDPERIPH_DRIVER SETA 1"--list .\listings\startup_n32g030.lst --xref -o .\objects\startup_n32g030.o --depend .\objects\startup_n32g030.d)
+F (..\..\..\..\..\..\firmware\CMSIS\device\system_n32g030.c)(0x62D1173A)(-c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\..\..\..\..\firmware\CMSIS\device -I ..\inc -I ..\..\..\..\..\..\firmware\CMSIS\core -I ..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc-ID:\SVN\NS3603\Nationstech.N32G030_Library.1.1.1\projects\n32g030_EVAL\examples\LPTIM\LPTIM_WakeUp\MDK-ARM\RTE-IC:\Keil_v5\ARM\PACK\Nationstech\N32G030_DFP\1.0.3\firmware\CMSIS\device-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DN32G030 -DUSE_STDPERIPH_DRIVER -DN32G030 -DUSE_STDPERIPH_DRIVER-o .\objects\system_n32g030.o --omf_browse .\objects\system_n32g030.crf --depend .\objects\system_n32g030.d)
+I (..\..\..\..\..\..\firmware\CMSIS\device\n32g030.h)(0x62E23420)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cm0.h)(0x62D1173A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E3E26)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cmInstr.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cmFunc.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\CMSIS\device\system_n32g030.h)(0x62D1173A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x574E3E26)
+I (..\..\..\..\..\..\firmware\CMSIS\device\n32g030_conf.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_adc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_beeper.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_comp.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_crc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_dbg.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_dma.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_exti.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_flash.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_gpio.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_hdiv.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_i2c.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_iwdg.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_opamp.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_pwr.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_rcc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_rtc.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_spi.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_sqrt.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_tim.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_usart.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_lpuart.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_lptim.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_wwdg.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\misc.h)(0x62D11739)
+F (..\src\main.c)(0x62D1174E)(-c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\..\..\..\..\firmware\CMSIS\device -I ..\inc -I ..\..\..\..\..\..\firmware\CMSIS\core -I ..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc-ID:\SVN\NS3603\Nationstech.N32G030_Library.1.1.1\projects\n32g030_EVAL\examples\LPTIM\LPTIM_WakeUp\MDK-ARM\RTE-IC:\Keil_v5\ARM\PACK\Nationstech\N32G030_DFP\1.0.3\firmware\CMSIS\device-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DN32G030 -DUSE_STDPERIPH_DRIVER -DN32G030 -DUSE_STDPERIPH_DRIVER-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (..\inc\main.h)(0x62D1174F)
+I (..\..\..\..\..\..\firmware\CMSIS\device\n32g030.h)(0x62E23420)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cm0.h)(0x62D1173A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E3E26)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cmInstr.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cmFunc.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\CMSIS\device\system_n32g030.h)(0x62D1173A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x574E3E26)
+I (..\..\..\..\..\..\firmware\CMSIS\device\n32g030_conf.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_adc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_beeper.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_comp.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_crc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_dbg.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_dma.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_exti.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_flash.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_gpio.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_hdiv.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_i2c.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_iwdg.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_opamp.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_pwr.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_rcc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_rtc.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_spi.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_sqrt.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_tim.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_usart.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_lpuart.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_lptim.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_wwdg.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\misc.h)(0x62D11739)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x574E3E26)
+F (..\src\n32g030_it.c)(0x62D1174E)(-c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\..\..\..\..\firmware\CMSIS\device -I ..\inc -I ..\..\..\..\..\..\firmware\CMSIS\core -I ..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc-ID:\SVN\NS3603\Nationstech.N32G030_Library.1.1.1\projects\n32g030_EVAL\examples\LPTIM\LPTIM_WakeUp\MDK-ARM\RTE-IC:\Keil_v5\ARM\PACK\Nationstech\N32G030_DFP\1.0.3\firmware\CMSIS\device-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DN32G030 -DUSE_STDPERIPH_DRIVER -DN32G030 -DUSE_STDPERIPH_DRIVER-o .\objects\n32g030_it.o --omf_browse .\objects\n32g030_it.crf --depend .\objects\n32g030_it.d)
+I (..\inc\n32g030_it.h)(0x62D1174F)
+I (..\..\..\..\..\..\firmware\CMSIS\device\n32g030.h)(0x62E23420)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cm0.h)(0x62D1173A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E3E26)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cmInstr.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cmFunc.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\CMSIS\device\system_n32g030.h)(0x62D1173A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x574E3E26)
+I (..\..\..\..\..\..\firmware\CMSIS\device\n32g030_conf.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_adc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_beeper.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_comp.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_crc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_dbg.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_dma.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_exti.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_flash.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_gpio.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_hdiv.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_i2c.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_iwdg.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_opamp.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_pwr.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_rcc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_rtc.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_spi.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_sqrt.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_tim.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_usart.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_lpuart.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_lptim.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_wwdg.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\misc.h)(0x62D11739)
+I (..\inc\main.h)(0x62D1174F)
+F (..\readme.txt)(0x62D1174F)()
+F (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\src\n32g030_flash.c)(0x62D11738)(-c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\..\..\..\..\firmware\CMSIS\device -I ..\inc -I ..\..\..\..\..\..\firmware\CMSIS\core -I ..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc-ID:\SVN\NS3603\Nationstech.N32G030_Library.1.1.1\projects\n32g030_EVAL\examples\LPTIM\LPTIM_WakeUp\MDK-ARM\RTE-IC:\Keil_v5\ARM\PACK\Nationstech\N32G030_DFP\1.0.3\firmware\CMSIS\device-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DN32G030 -DUSE_STDPERIPH_DRIVER -DN32G030 -DUSE_STDPERIPH_DRIVER-o .\objects\n32g030_flash.o --omf_browse .\objects\n32g030_flash.crf --depend .\objects\n32g030_flash.d)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_flash.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\CMSIS\device\n32g030.h)(0x62E23420)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cm0.h)(0x62D1173A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E3E26)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cmInstr.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cmFunc.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\CMSIS\device\system_n32g030.h)(0x62D1173A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x574E3E26)
+I (..\..\..\..\..\..\firmware\CMSIS\device\n32g030_conf.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_adc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_beeper.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_comp.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_crc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_dbg.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_dma.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_exti.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_gpio.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_hdiv.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_i2c.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_iwdg.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_opamp.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_pwr.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_rcc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_rtc.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_spi.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_sqrt.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_tim.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_usart.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_lpuart.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_lptim.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_wwdg.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\misc.h)(0x62D11739)
+F (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\src\n32g030_gpio.c)(0x62D11738)(-c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\..\..\..\..\firmware\CMSIS\device -I ..\inc -I ..\..\..\..\..\..\firmware\CMSIS\core -I ..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc-ID:\SVN\NS3603\Nationstech.N32G030_Library.1.1.1\projects\n32g030_EVAL\examples\LPTIM\LPTIM_WakeUp\MDK-ARM\RTE-IC:\Keil_v5\ARM\PACK\Nationstech\N32G030_DFP\1.0.3\firmware\CMSIS\device-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DN32G030 -DUSE_STDPERIPH_DRIVER -DN32G030 -DUSE_STDPERIPH_DRIVER-o .\objects\n32g030_gpio.o --omf_browse .\objects\n32g030_gpio.crf --depend .\objects\n32g030_gpio.d)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_gpio.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\CMSIS\device\n32g030.h)(0x62E23420)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cm0.h)(0x62D1173A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E3E26)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cmInstr.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cmFunc.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\CMSIS\device\system_n32g030.h)(0x62D1173A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x574E3E26)
+I (..\..\..\..\..\..\firmware\CMSIS\device\n32g030_conf.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_adc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_beeper.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_comp.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_crc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_dbg.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_dma.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_exti.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_flash.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_hdiv.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_i2c.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_iwdg.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_opamp.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_pwr.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_rcc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_rtc.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_spi.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_sqrt.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_tim.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_usart.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_lpuart.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_lptim.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_wwdg.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\misc.h)(0x62D11739)
+F (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\src\n32g030_lptim.c)(0x62D11739)(-c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\..\..\..\..\firmware\CMSIS\device -I ..\inc -I ..\..\..\..\..\..\firmware\CMSIS\core -I ..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc-ID:\SVN\NS3603\Nationstech.N32G030_Library.1.1.1\projects\n32g030_EVAL\examples\LPTIM\LPTIM_WakeUp\MDK-ARM\RTE-IC:\Keil_v5\ARM\PACK\Nationstech\N32G030_DFP\1.0.3\firmware\CMSIS\device-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DN32G030 -DUSE_STDPERIPH_DRIVER -DN32G030 -DUSE_STDPERIPH_DRIVER-o .\objects\n32g030_lptim.o --omf_browse .\objects\n32g030_lptim.crf --depend .\objects\n32g030_lptim.d)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_lptim.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\CMSIS\device\n32g030.h)(0x62E23420)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cm0.h)(0x62D1173A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E3E26)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cmInstr.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cmFunc.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\CMSIS\device\system_n32g030.h)(0x62D1173A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x574E3E26)
+I (..\..\..\..\..\..\firmware\CMSIS\device\n32g030_conf.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_adc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_beeper.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_comp.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_crc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_dbg.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_dma.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_exti.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_flash.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_gpio.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_hdiv.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_i2c.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_iwdg.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_opamp.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_pwr.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_rcc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_rtc.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_spi.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_sqrt.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_tim.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_usart.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_lpuart.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_wwdg.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\misc.h)(0x62D11739)
+F (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\src\n32g030_rcc.c)(0x62D11739)(-c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\..\..\..\..\firmware\CMSIS\device -I ..\inc -I ..\..\..\..\..\..\firmware\CMSIS\core -I ..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc-ID:\SVN\NS3603\Nationstech.N32G030_Library.1.1.1\projects\n32g030_EVAL\examples\LPTIM\LPTIM_WakeUp\MDK-ARM\RTE-IC:\Keil_v5\ARM\PACK\Nationstech\N32G030_DFP\1.0.3\firmware\CMSIS\device-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DN32G030 -DUSE_STDPERIPH_DRIVER -DN32G030 -DUSE_STDPERIPH_DRIVER-o .\objects\n32g030_rcc.o --omf_browse .\objects\n32g030_rcc.crf --depend .\objects\n32g030_rcc.d)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_rcc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\CMSIS\device\n32g030.h)(0x62E23420)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cm0.h)(0x62D1173A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E3E26)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cmInstr.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cmFunc.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\CMSIS\device\system_n32g030.h)(0x62D1173A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x574E3E26)
+I (..\..\..\..\..\..\firmware\CMSIS\device\n32g030_conf.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_adc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_beeper.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_comp.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_crc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_dbg.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_dma.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_exti.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_flash.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_gpio.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_hdiv.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_i2c.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_iwdg.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_opamp.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_pwr.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_rtc.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_spi.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_sqrt.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_tim.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_usart.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_lpuart.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_lptim.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_wwdg.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\misc.h)(0x62D11739)
+F (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\src\misc.c)(0x62D11739)(-c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\..\..\..\..\firmware\CMSIS\device -I ..\inc -I ..\..\..\..\..\..\firmware\CMSIS\core -I ..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc-ID:\SVN\NS3603\Nationstech.N32G030_Library.1.1.1\projects\n32g030_EVAL\examples\LPTIM\LPTIM_WakeUp\MDK-ARM\RTE-IC:\Keil_v5\ARM\PACK\Nationstech\N32G030_DFP\1.0.3\firmware\CMSIS\device-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DN32G030 -DUSE_STDPERIPH_DRIVER -DN32G030 -DUSE_STDPERIPH_DRIVER-o .\objects\misc.o --omf_browse .\objects\misc.crf --depend .\objects\misc.d)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\misc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\CMSIS\device\n32g030.h)(0x62E23420)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cm0.h)(0x62D1173A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E3E26)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cmInstr.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cmFunc.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\CMSIS\device\system_n32g030.h)(0x62D1173A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x574E3E26)
+I (..\..\..\..\..\..\firmware\CMSIS\device\n32g030_conf.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_adc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_beeper.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_comp.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_crc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_dbg.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_dma.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_exti.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_flash.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_gpio.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_hdiv.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_i2c.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_iwdg.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_opamp.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_pwr.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_rcc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_rtc.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_spi.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_sqrt.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_tim.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_usart.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_lpuart.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_lptim.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_wwdg.h)(0x62D11739)
+F (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\src\n32g030_exti.c)(0x62D11739)(-c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\..\..\..\..\firmware\CMSIS\device -I ..\inc -I ..\..\..\..\..\..\firmware\CMSIS\core -I ..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc-ID:\SVN\NS3603\Nationstech.N32G030_Library.1.1.1\projects\n32g030_EVAL\examples\LPTIM\LPTIM_WakeUp\MDK-ARM\RTE-IC:\Keil_v5\ARM\PACK\Nationstech\N32G030_DFP\1.0.3\firmware\CMSIS\device-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DN32G030 -DUSE_STDPERIPH_DRIVER -DN32G030 -DUSE_STDPERIPH_DRIVER-o .\objects\n32g030_exti.o --omf_browse .\objects\n32g030_exti.crf --depend .\objects\n32g030_exti.d)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_exti.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\CMSIS\device\n32g030.h)(0x62E23420)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cm0.h)(0x62D1173A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E3E26)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cmInstr.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cmFunc.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\CMSIS\device\system_n32g030.h)(0x62D1173A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x574E3E26)
+I (..\..\..\..\..\..\firmware\CMSIS\device\n32g030_conf.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_adc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_beeper.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_comp.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_crc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_dbg.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_dma.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_flash.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_gpio.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_hdiv.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_i2c.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_iwdg.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_opamp.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_pwr.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_rcc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_rtc.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_spi.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_sqrt.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_tim.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_usart.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_lpuart.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_lptim.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_wwdg.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\misc.h)(0x62D11739)
+F (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\src\n32g030_dbg.c)(0x62D11738)(-c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\..\..\..\..\firmware\CMSIS\device -I ..\inc -I ..\..\..\..\..\..\firmware\CMSIS\core -I ..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc-ID:\SVN\NS3603\Nationstech.N32G030_Library.1.1.1\projects\n32g030_EVAL\examples\LPTIM\LPTIM_WakeUp\MDK-ARM\RTE-IC:\Keil_v5\ARM\PACK\Nationstech\N32G030_DFP\1.0.3\firmware\CMSIS\device-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DN32G030 -DUSE_STDPERIPH_DRIVER -DN32G030 -DUSE_STDPERIPH_DRIVER-o .\objects\n32g030_dbg.o --omf_browse .\objects\n32g030_dbg.crf --depend .\objects\n32g030_dbg.d)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_dbg.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\CMSIS\device\n32g030.h)(0x62E23420)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cm0.h)(0x62D1173A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E3E26)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cmInstr.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cmFunc.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\CMSIS\device\system_n32g030.h)(0x62D1173A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x574E3E26)
+I (..\..\..\..\..\..\firmware\CMSIS\device\n32g030_conf.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_adc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_beeper.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_comp.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_crc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_dma.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_exti.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_flash.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_gpio.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_hdiv.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_i2c.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_iwdg.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_opamp.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_pwr.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_rcc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_rtc.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_spi.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_sqrt.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_tim.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_usart.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_lpuart.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_lptim.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_wwdg.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\misc.h)(0x62D11739)
+F (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\src\n32g030_pwr.c)(0x62E23357)(-c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\..\..\..\..\..\firmware\CMSIS\device -I ..\inc -I ..\..\..\..\..\..\firmware\CMSIS\core -I ..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc-ID:\SVN\NS3603\Nationstech.N32G030_Library.1.1.1\projects\n32g030_EVAL\examples\LPTIM\LPTIM_WakeUp\MDK-ARM\RTE-IC:\Keil_v5\ARM\PACK\Nationstech\N32G030_DFP\1.0.3\firmware\CMSIS\device-IC:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DN32G030 -DUSE_STDPERIPH_DRIVER -DN32G030 -DUSE_STDPERIPH_DRIVER-o .\objects\n32g030_pwr.o --omf_browse .\objects\n32g030_pwr.crf --depend .\objects\n32g030_pwr.d)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_pwr.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\CMSIS\device\n32g030.h)(0x62E23420)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cm0.h)(0x62D1173A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E3E26)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cmInstr.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\CMSIS\core\core_cmFunc.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\CMSIS\device\system_n32g030.h)(0x62D1173A)
+I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x574E3E26)
+I (..\..\..\..\..\..\firmware\CMSIS\device\n32g030_conf.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_adc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_beeper.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_comp.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_crc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_dbg.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_dma.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_exti.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_flash.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_gpio.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_hdiv.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_i2c.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_iwdg.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_opamp.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_rcc.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_rtc.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_spi.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_sqrt.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_tim.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_usart.h)(0x62D1173A)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_lpuart.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_lptim.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\n32g030_wwdg.h)(0x62D11739)
+I (..\..\..\..\..\..\firmware\n32g030_std_periph_driver\inc\misc.h)(0x62D11739)

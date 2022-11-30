@@ -28,7 +28,7 @@
 /**
  * @file n32g030_adc.c
  * @author Nations 
- * @version v1.0.2
+ * @version v1.0.3
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
@@ -1045,27 +1045,6 @@ void ADC_ConfigAnalogWatchdogSingleChannel(ADC_Module* ADCx, uint8_t ADC_Channel
     ADCx->CTRL1 = tmpregister;
 }
 
-/**
- * @brief  Enables or disables the temperature sensor channel.
-           Old funciton interface,for compatibility
- * @param Cmd new state of the temperature sensor.
- *   This parameter can be: ENABLE or DISABLE.
- */
-void ADC_EnableTempSensorVrefint(FunctionalState Cmd)
-{
-    /* Check the parameters */
-    assert_param(IS_FUNCTIONAL_STATE(Cmd));
-    if (Cmd != DISABLE)
-    {
-        /* Enable the temperature sensor and Vrefint channel*/
-        ADC->CTRL2 |= CTRL2_TS_SET;
-    }
-    else
-    {
-        /* Disable the temperature sensor and Vrefint channel*/
-        ADC->CTRL2 &= CTRL2_TS_RESET;
-    }
-}
 
 /**
  * @brief  Enables or disables the temperature sensor channel.

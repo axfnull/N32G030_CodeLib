@@ -28,7 +28,7 @@
 /**
  * @file system_n32g030.c
  * @author Nations
- * @version v1.0.0
+ * @version v1.0.1
  *
  * @copyright Copyright (c) 2019, Nations Technologies Inc. All rights reserved.
  */
@@ -102,94 +102,142 @@
         #error SYSCL_FREQ must be set to HSE_VALUE
     #endif
 
-#elif SYSCLK_SRC == SYSCLK_USE_HSI_PLL
-    
-    #ifndef HSI_VALUE
-        #error HSI_VALUE must be defined!
-    #endif
-    
-    #if ( (((SYSCLK_FREQ * 1) / HSI_VALUE) >= 3) && (((SYSCLK_FREQ * 1) / HSI_VALUE) <= 18) && (((SYSCLK_FREQ * 1) % HSI_VALUE) == 0) )
-        #define PLL_MUL    (SYSCLK_FREQ / HSI_VALUE)
-        #define PLL_PRE    0
-        #define PLLOUT_DIV 0
-    #else
-        #if ( (((SYSCLK_FREQ * 2) / HSI_VALUE) >= 3) && (((SYSCLK_FREQ * 2) / HSI_VALUE) <= 18) && (((SYSCLK_FREQ * 2) % HSI_VALUE) == 0) )
-            #define PLL_MUL    ((SYSCLK_FREQ * 2) / HSI_VALUE)
-            #define PLL_PRE    1
-            #define PLLOUT_DIV 0
-        #else
-            #if ( (((SYSCLK_FREQ * 3) / HSI_VALUE) >= 3) && (((SYSCLK_FREQ * 3) / HSI_VALUE) <= 18) && (((SYSCLK_FREQ * 3) % HSI_VALUE) == 0) )
-                #define PLL_MUL    ((SYSCLK_FREQ * 3) / HSI_VALUE)
+#elif SYSCLK_SRC == SYSCLK_USE_HSI_PLL || SYSCLK_SRC == SYSCLK_USE_HSE_PLL
+	
+		#if SYSCLK_SRC == SYSCLK_USE_HSI_PLL
+				#ifndef HSI_VALUE
+						#error HSI_VALUE must be defined!
+				#endif
+				#define PLLSRC_VALUE  HSI_VALUE
+		#elif SYSCLK_SRC == SYSCLK_USE_HSE_PLL
+				#ifndef HSE_VALUE
+				    #error HSE_VALUE must be defined!
+				#endif
+				#define PLLSRC_VALUE  HSE_VALUE
+		#endif 
+		
+    #if ((SYSCLK_FREQ * 1) >= 48000000) && ((SYSCLK_FREQ * 1) <= 72000000)
+        #if ( ((PLLSRC_VALUE / 1) >= 4000000) && ((PLLSRC_VALUE / 1) <= 20000000) && ((PLLSRC_VALUE % 1) == 0) )\
+            && ( (((SYSCLK_FREQ * 1) / PLLSRC_VALUE) >= 3) && (((SYSCLK_FREQ * 1) / PLLSRC_VALUE) <= 18) && (((SYSCLK_FREQ * 1) % PLLSRC_VALUE) == 0) )
+                #define PLL_MUL    (SYSCLK_FREQ * 1 / PLLSRC_VALUE)
                 #define PLL_PRE    0
-                #define PLLOUT_DIV 2
-            #else
-                #if ( (((SYSCLK_FREQ * 4) / HSI_VALUE) >= 3) && (((SYSCLK_FREQ * 4) / HSI_VALUE) <= 18) && (((SYSCLK_FREQ * 4) % HSI_VALUE) == 0) )
-                    #define PLL_MUL    ((SYSCLK_FREQ * 4) / HSI_VALUE)
-                    #define PLL_PRE    1
-                    #define PLLOUT_DIV 1
-                #else
-                    #if ( (((SYSCLK_FREQ * 6) / HSI_VALUE) >= 3) && (((SYSCLK_FREQ * 6) / HSI_VALUE) <= 18) && (((SYSCLK_FREQ * 6) % HSI_VALUE) == 0) )
-                        #define PLL_MUL    ((SYSCLK_FREQ * 6) / HSI_VALUE)
-                        #define PLL_PRE    1
-                        #define PLLOUT_DIV 2
-                    #else
-                        #if ( (((SYSCLK_FREQ * 8) / HSI_VALUE) >= 3) && (((SYSCLK_FREQ * 8) / HSI_VALUE) <= 18) && (((SYSCLK_FREQ * 8) % HSI_VALUE) == 0) )
-                            #define PLL_MUL    ((SYSCLK_FREQ * 8) / HSI_VALUE)
-                            #define PLL_PRE    2
-                            #define PLLOUT_DIV 2
-                        #else
-                            #error Cannot make a PLL multiply factor to SYSCLK_FREQ.
-                        #endif
-                    #endif
-                #endif
-            #endif
+								#define PLLOUT_DIV 0
+                #define SYSCLK_CONFIG_PASS
+				#elif ( ((PLLSRC_VALUE / 2) >= 4000000) && ((PLLSRC_VALUE / 2) <= 20000000) && ((PLLSRC_VALUE % 2) == 0) )\
+						&& ( (((SYSCLK_FREQ * 2) / PLLSRC_VALUE) >= 3) && (((SYSCLK_FREQ * 2) / PLLSRC_VALUE) <= 18) && (((SYSCLK_FREQ * 2) % PLLSRC_VALUE) == 0) )
+								#define PLL_MUL    (SYSCLK_FREQ * 2 / PLLSRC_VALUE)
+								#define PLL_PRE    1
+								#define PLLOUT_DIV 0
+								#define SYSCLK_CONFIG_PASS
+				#elif ( ((PLLSRC_VALUE / 3) >= 4000000) && ((PLLSRC_VALUE / 3) <= 20000000) && ((PLLSRC_VALUE % 3) == 0) )\
+						&& ( (((SYSCLK_FREQ * 3) / PLLSRC_VALUE) >= 3) && (((SYSCLK_FREQ * 3) / PLLSRC_VALUE) <= 18) && (((SYSCLK_FREQ * 3) % PLLSRC_VALUE) == 0) )
+								#define PLL_MUL    (SYSCLK_FREQ * 3 / PLLSRC_VALUE)
+								#define PLL_PRE    2
+								#define PLLOUT_DIV 0
+								#define SYSCLK_CONFIG_PASS
+				#elif ( ((PLLSRC_VALUE / 4) >= 4000000) && ((PLLSRC_VALUE / 4) <= 20000000) && ((PLLSRC_VALUE % 4) == 0) )\
+						&& ( (((SYSCLK_FREQ * 4) / PLLSRC_VALUE) >= 3) && (((SYSCLK_FREQ * 4) / PLLSRC_VALUE) <= 18) && (((SYSCLK_FREQ * 4) % PLLSRC_VALUE) == 0) )
+								#define PLL_MUL    (SYSCLK_FREQ * 4 / PLLSRC_VALUE)
+								#define PLL_PRE    3
+								#define PLLOUT_DIV 0
+								#define SYSCLK_CONFIG_PASS
         #endif
     #endif
-
-#elif SYSCLK_SRC == SYSCLK_USE_HSE_PLL
-
-    #ifndef HSE_VALUE
-        #error HSE_VALUE must be defined!
-    #endif
-
-    #if ( (((SYSCLK_FREQ * 1) / HSE_VALUE) >= 3) && (((SYSCLK_FREQ * 1) / HSE_VALUE) <= 18) && (((SYSCLK_FREQ * 1) % HSE_VALUE) == 0) )
-        #define PLL_MUL    (SYSCLK_FREQ / HSE_VALUE)
-        #define PLL_PRE    0
-        #define PLLOUT_DIV 0
-    #else
-        #if ( (((SYSCLK_FREQ * 2) / HSE_VALUE) >= 3) && (((SYSCLK_FREQ * 2) / HSE_VALUE) <= 18) && (((SYSCLK_FREQ * 2) % HSE_VALUE) == 0) )
-            #define PLL_MUL    ((SYSCLK_FREQ * 2) / HSE_VALUE)
-            #define PLL_PRE    1
-            #define PLLOUT_DIV 0
-        #else
-            #if ( (((SYSCLK_FREQ * 3) / HSE_VALUE) >= 3) && (((SYSCLK_FREQ * 3) / HSE_VALUE) <= 18) && (((SYSCLK_FREQ * 3) % HSE_VALUE) == 0) )
-                #define PLL_MUL    ((SYSCLK_FREQ * 3) / HSE_VALUE)
-                #define PLL_PRE    0
-                #define PLLOUT_DIV 2
-            #else
-                #if ( (((SYSCLK_FREQ * 4) / HSE_VALUE) >= 3) && (((SYSCLK_FREQ * 4) / HSE_VALUE) <= 18) && (((SYSCLK_FREQ * 4) % HSE_VALUE) == 0) )
-                    #define PLL_MUL    ((SYSCLK_FREQ * 4) / HSE_VALUE)
-                    #define PLL_PRE    1
-                    #define PLLOUT_DIV 1
-                #else
-                    #if ( (((SYSCLK_FREQ * 6) / HSE_VALUE) >= 3) && (((SYSCLK_FREQ * 6) / HSE_VALUE) <= 18) && (((SYSCLK_FREQ * 6) % HSE_VALUE) == 0) )
-                        #define PLL_MUL    ((SYSCLK_FREQ * 6) / HSE_VALUE)
-                        #define PLL_PRE    1
-                        #define PLLOUT_DIV 2
-                    #else
-                        #if ( (((SYSCLK_FREQ * 8) / HSE_VALUE) >= 3) && (((SYSCLK_FREQ * 8) / HSE_VALUE) <= 18) && (((SYSCLK_FREQ * 8) % HSE_VALUE) == 0) )
-                            #define PLL_MUL    ((SYSCLK_FREQ * 8) / HSE_VALUE)
-                            #define PLL_PRE    2
-                            #define PLLOUT_DIV 2
-                        #else
-                            #error Cannot make a PLL multiply factor to SYSCLK_FREQ.
-                        #endif
-                    #endif
-                #endif
+    
+    #ifndef SYSCLK_CONFIG_PASS
+        #if ((SYSCLK_FREQ * 2) >= 48000000) && ((SYSCLK_FREQ * 2) <= 72000000)          
+            #if ( ((PLLSRC_VALUE / 1) >= 4000000) && ((PLLSRC_VALUE / 1) <= 20000000) && ((PLLSRC_VALUE % 1) == 0) )\
+                && ( (((SYSCLK_FREQ * 2) / PLLSRC_VALUE) >= 3) && (((SYSCLK_FREQ * 2) / PLLSRC_VALUE) <= 18) && (((SYSCLK_FREQ * 2) % PLLSRC_VALUE) == 0) )
+                    #define PLL_MUL    (SYSCLK_FREQ * 2 / PLLSRC_VALUE)
+                    #define PLL_PRE    0
+										#define PLLOUT_DIV 1
+                    #define SYSCLK_CONFIG_PASS
+						#elif ( ((PLLSRC_VALUE / 2) >= 4000000) && ((PLLSRC_VALUE / 2) <= 20000000) && ((PLLSRC_VALUE % 2) == 0) )\
+								&& ( (((SYSCLK_FREQ * 4) / PLLSRC_VALUE) >= 3) && (((SYSCLK_FREQ * 4) / PLLSRC_VALUE) <= 18) && (((SYSCLK_FREQ * 4) % PLLSRC_VALUE) == 0) )
+										#define PLL_MUL    (SYSCLK_FREQ * 4 / PLLSRC_VALUE)
+										#define PLL_PRE    1
+										#define PLLOUT_DIV 1
+										#define SYSCLK_CONFIG_PASS
+						#elif ( ((PLLSRC_VALUE / 3) >= 4000000) && ((PLLSRC_VALUE / 3) <= 20000000) && ((PLLSRC_VALUE % 3) == 0) )\
+								&& ( (((SYSCLK_FREQ * 6) / PLLSRC_VALUE) >= 3) && (((SYSCLK_FREQ * 6) / PLLSRC_VALUE) <= 18) && (((SYSCLK_FREQ * 6) % PLLSRC_VALUE) == 0) )
+										#define PLL_MUL    (SYSCLK_FREQ * 6 / PLLSRC_VALUE)
+										#define PLL_PRE    2
+										#define PLLOUT_DIV 1
+										#define SYSCLK_CONFIG_PASS
+						#elif ( ((PLLSRC_VALUE / 4) >= 4000000) && ((PLLSRC_VALUE / 4) <= 20000000) && ((PLLSRC_VALUE % 4) == 0) )\
+								&& ( (((SYSCLK_FREQ * 8) / PLLSRC_VALUE) >= 3) && (((SYSCLK_FREQ * 8) / PLLSRC_VALUE) <= 18) && (((SYSCLK_FREQ * 8) % PLLSRC_VALUE) == 0) )
+										#define PLL_MUL    (SYSCLK_FREQ * 8 / PLLSRC_VALUE)
+										#define PLL_PRE    3
+										#define PLLOUT_DIV 1
+										#define SYSCLK_CONFIG_PASS                          
+             #endif
+         #endif
+     #endif
+    
+    #ifndef SYSCLK_CONFIG_PASS
+        #if ((SYSCLK_FREQ * 3) >= 48000000) && ((SYSCLK_FREQ * 3) <= 72000000)           
+            #if ( ((PLLSRC_VALUE / 1) >= 4000000) && ((PLLSRC_VALUE / 1) <= 20000000) && ((PLLSRC_VALUE % 1) == 0) )\
+                && ( (((SYSCLK_FREQ * 3) / PLLSRC_VALUE) >= 3) && (((SYSCLK_FREQ * 3) / PLLSRC_VALUE) <= 18) && (((SYSCLK_FREQ * 3) % PLLSRC_VALUE) == 0) )
+                    #define PLL_MUL    (SYSCLK_FREQ * 3 / PLLSRC_VALUE)
+                    #define PLL_PRE    0
+										#define PLLOUT_DIV 2
+                    #define SYSCLK_CONFIG_PASS
+						#elif ( ((PLLSRC_VALUE / 2) >= 4000000) && ((PLLSRC_VALUE / 2) <= 20000000) && ((PLLSRC_VALUE % 2) == 0) )\
+								&& ( (((SYSCLK_FREQ * 6) / PLLSRC_VALUE) >= 3) && (((SYSCLK_FREQ * 6) / PLLSRC_VALUE) <= 18) && (((SYSCLK_FREQ * 6) % PLLSRC_VALUE) == 0) )
+										#define PLL_MUL    (SYSCLK_FREQ * 6 / PLLSRC_VALUE)
+										#define PLL_PRE    1
+										#define PLLOUT_DIV 2
+										#define SYSCLK_CONFIG_PASS
+						#elif ( ((PLLSRC_VALUE / 3) >= 4000000) && ((PLLSRC_VALUE / 3) <= 20000000) && ((PLLSRC_VALUE % 3) == 0) )\
+								&& ( (((SYSCLK_FREQ * 9) / PLLSRC_VALUE) >= 3) && (((SYSCLK_FREQ * 9) / PLLSRC_VALUE) <= 18) && (((SYSCLK_FREQ * 9) % PLLSRC_VALUE) == 0) )
+										#define PLL_MUL    (SYSCLK_FREQ * 9 / PLLSRC_VALUE)
+										#define PLL_PRE    2
+										#define PLLOUT_DIV 2
+										#define SYSCLK_CONFIG_PASS
+						#elif ( ((PLLSRC_VALUE / 4) >= 4000000) && ((PLLSRC_VALUE / 4) <= 20000000) && ((PLLSRC_VALUE % 4) == 0) )\
+								&& ( (((SYSCLK_FREQ * 12) / PLLSRC_VALUE) >= 3) && (((SYSCLK_FREQ * 12) / PLLSRC_VALUE) <= 18) && (((SYSCLK_FREQ * 12) % PLLSRC_VALUE) == 0) )
+										#define PLL_MUL    (SYSCLK_FREQ * 12 / PLLSRC_VALUE)
+										#define PLL_PRE    3
+										#define PLLOUT_DIV 2
+										#define SYSCLK_CONFIG_PASS                   
             #endif
-        #endif
-    #endif
-
+         #endif
+     #endif
+    
+   #ifndef SYSCLK_CONFIG_PASS
+       #if ((SYSCLK_FREQ * 4) >= 48000000) && ((SYSCLK_FREQ * 4) <= 72000000)            
+           #if  (((PLLSRC_VALUE / 1) >= 4000000) && ((PLLSRC_VALUE / 1) <= 20000000) && ((PLLSRC_VALUE % 1) == 0) \
+					 && (((SYSCLK_FREQ * 4) / PLLSRC_VALUE) >= 3) && (((SYSCLK_FREQ * 4) / PLLSRC_VALUE) <= 18) && (((SYSCLK_FREQ * 4) % PLLSRC_VALUE) == 0) )
+                    #define PLL_MUL    (SYSCLK_FREQ * 4 / PLLSRC_VALUE)
+                    #define PLL_PRE    0
+										#define PLLOUT_DIV 3
+                    #define SYSCLK_CONFIG_PASS
+           #elif (((PLLSRC_VALUE / 2) >= 4000000) && ((PLLSRC_VALUE / 2) <= 20000000) && ((PLLSRC_VALUE % 2) == 0)  \
+					 && (((SYSCLK_FREQ * 8) / PLLSRC_VALUE) >= 3) && (((SYSCLK_FREQ * 8) / PLLSRC_VALUE) <= 18) && (((SYSCLK_FREQ * 8) % PLLSRC_VALUE) == 0) )
+										#define PLL_MUL    (SYSCLK_FREQ * 8 / PLLSRC_VALUE)
+										#define PLL_PRE    1
+										#define PLLOUT_DIV 3
+										#define SYSCLK_CONFIG_PASS
+           #elif  (((PLLSRC_VALUE / 3) >= 4000000) && ((PLLSRC_VALUE / 3) <= 20000000) && ((PLLSRC_VALUE % 3) == 0) \
+					 && (((SYSCLK_FREQ * 12) / PLLSRC_VALUE) >= 3) && (((SYSCLK_FREQ * 12) / PLLSRC_VALUE) <= 18) && (((SYSCLK_FREQ * 12) % PLLSRC_VALUE) == 0) )
+										#define PLL_MUL    (SYSCLK_FREQ * 12 / PLLSRC_VALUE)
+										#define PLL_PRE    2
+										#define PLLOUT_DIV 3
+										#define SYSCLK_CONFIG_PASS
+           #elif  (((PLLSRC_VALUE / 4) >= 4000000) && ((PLLSRC_VALUE / 4) <= 20000000) && ((PLLSRC_VALUE % 4) == 0) \
+					 && (((SYSCLK_FREQ * 16) / PLLSRC_VALUE) >= 3) && (((SYSCLK_FREQ * 16) / PLLSRC_VALUE) <= 18) && (((SYSCLK_FREQ * 16) % PLLSRC_VALUE) == 0) )
+										#define PLL_MUL    (SYSCLK_FREQ * 16 / PLLSRC_VALUE)
+										#define PLL_PRE    3
+										#define PLLOUT_DIV 3
+										#define SYSCLK_CONFIG_PASS                          
+           #endif
+       #endif
+   #endif
+     
+	 #ifndef SYSCLK_CONFIG_PASS
+			 #error Cannot make a PLL multiply factor to SYSCLK_FREQ.
+	 #endif
+		 
 #elif SYSCLK_SRC == SYSCLK_USE_LSE
 
     #ifndef LSE_VALUE
@@ -512,18 +560,6 @@ static void SetSysClock(void)
     {
     }
 #elif SYSCLK_SRC == SYSCLK_USE_HSI_PLL || SYSCLK_SRC == SYSCLK_USE_HSE_PLL
-
-	#if ((SYSCLK_FREQ * (PLLOUT_DIV + 1)) < 48000000 ) || ((SYSCLK_FREQ * (PLLOUT_DIV + 1)) > 72000000 )
-	
-		#error FIN/N*M must be set in 48MHz to 72MHz
-	
-	#endif
-	
-	#if ((SYSCLK_FREQ * (PLLOUT_DIV + 1) / PLL_MUL) < 4000000 ) || ((SYSCLK_FREQ * (PLLOUT_DIV + 1) / PLL_MUL) > 20000000 )
-	
-		#error FIN/N must be set in 4MHz to 20MHz
-	
-	#endif
 		
     /* clear bits */
     /* Clear PLLOUTDIV PLLPRE bits */
